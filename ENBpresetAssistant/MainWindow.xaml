@@ -12,8 +12,7 @@
     mc:Ignorable="d"
     Title="ENBpresetAssistant" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None">
     <Grid>
-        <Grid>
-            <materialDesign:DialogHost DialogClosing="DialogHost_DialogClosing">
+        <materialDesign:DialogHost DialogClosing="DialogHost_DialogClosing">
                 <materialDesign:DialogHost.DialogContent>
                     <StackPanel Margin="30">
                         <TextBlock FontSize="20">Are you sure to Exit?</TextBlock>
@@ -38,32 +37,39 @@
                     </StackPanel>
                 </materialDesign:DialogHost.DialogContent>
 
-                <DockPanel>
-                    <materialDesign:ColorZone 
-                        Padding="10" Height="50" 
-                        materialDesign:ShadowAssist.ShadowDepth="Depth2" 
-                        Mode="PrimaryMid" 
-                        DockPanel.Dock="Top" 
-                        MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
-                        <DockPanel>
-                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30"/>
+            <DockPanel>
+                <!--标题栏-->
+                <materialDesign:ColorZone 
+                    Padding="10" Height="50" 
+                    materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                    Mode="PrimaryMid" 
+                    DockPanel.Dock="Top" 
+                    MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
+                    <DockPanel>
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30"/>
 
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
-                                ToolTip="Close" 
-                                VerticalAlignment="Center" 
-                                DockPanel.Dock="Right"  
-                                materialDesign:ShadowAssist.ShadowDepth="Depth0"
-                                Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
-                                Width="30" Height="30">
-                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
-                            </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
+                            ToolTip="Close" 
+                            VerticalAlignment="Center" 
+                            DockPanel.Dock="Right"  
+                            materialDesign:ShadowAssist.ShadowDepth="Depth0"
+                            Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
+                            Width="30" Height="30">
+                            <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+                        </Button>
 
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">ENBpresetAssistant</TextBlock>
-                            <!--利用Dockpanel的lastchild属性使标题充满并居中-->
-                        </DockPanel>
-                    </materialDesign:ColorZone>
-                </DockPanel>
-            </materialDesign:DialogHost>
-        </Grid>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">ENBpresetAssistant</TextBlock>
+                        <!--利用Dockpanel的lastchild属性使标题充满并居中-->
+                    </DockPanel>
+                </materialDesign:ColorZone>
+
+                <Grid>
+                    <ScrollViewer>
+
+                    </ScrollViewer>
+                    <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"/>
+                </Grid>
+            </DockPanel>
+        </materialDesign:DialogHost>
     </Grid>
 </Window>
