@@ -38,5 +38,10 @@ namespace ENBpresetAssistant
 
             Application.Current.Shutdown();
         }
+
+        private void ColorZone_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }

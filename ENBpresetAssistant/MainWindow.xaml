@@ -39,7 +39,12 @@
                 </materialDesign:DialogHost.DialogContent>
 
                 <DockPanel>
-                    <materialDesign:ColorZone Padding="10" Height="50" materialDesign:ShadowAssist.ShadowDepth="Depth2" Mode="PrimaryMid" DockPanel.Dock="Top">
+                    <materialDesign:ColorZone 
+                        Padding="10" Height="50" 
+                        materialDesign:ShadowAssist.ShadowDepth="Depth2" 
+                        Mode="PrimaryMid" 
+                        DockPanel.Dock="Top" 
+                        MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
                         <DockPanel>
                             <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30"/>
 
