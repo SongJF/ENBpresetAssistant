@@ -4,6 +4,43 @@
              xmlns:local="clr-namespace:ENBpresetAssistant"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Material Design -->
+                <!--另一种配色方案-->
+                <!--<ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Dark.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.bluegrey.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.DeepPurPle.xaml" />-->
+
+                <!--設定主題背景色-->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
+                <!--套用基本控制項樣式-->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />
+                <!--設定主色-->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
+                <!--設定輔色-->
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Blue.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            
+
+            <!-- 加入筆刷資源 -->
+            <SolidColorBrush x:Key="HighlightBrush" Color="{DynamicResource Primary700}" />
+            <SolidColorBrush x:Key="AccentColorBrush" Color="{DynamicResource Primary500}" />
+            <SolidColorBrush x:Key="AccentColorBrush2" Color="{DynamicResource Primary400}" />
+            <SolidColorBrush x:Key="AccentColorBrush3" Color="{DynamicResource Primary300}" />
+            <SolidColorBrush x:Key="AccentColorBrush4" Color="{DynamicResource Primary200}" />
+            <SolidColorBrush x:Key="WindowTitleColorBrush" Color="{DynamicResource Primary700}" />
+            <SolidColorBrush x:Key="AccentSelectedColorBrush" Color="{DynamicResource Primary500Foreground}" />
+            <LinearGradientBrush x:Key="ProgressBrush" EndPoint="0.001,0.5" StartPoint="1.002,0.5">
+                <GradientStop Color="{DynamicResource Primary700}" Offset="0" />
+                <GradientStop Color="{DynamicResource Primary300}" Offset="1" />
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="CheckmarkFill" Color="{DynamicResource Primary500}" />
+            <SolidColorBrush x:Key="RightArrowFill" Color="{DynamicResource Primary500}" />
+            <SolidColorBrush x:Key="IdealForegroundColorBrush" Color="{DynamicResource Primary500Foreground}" />
+            <SolidColorBrush x:Key="IdealForegroundDisabledBrush" Color="{DynamicResource Primary500}" Opacity="0.4" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>
