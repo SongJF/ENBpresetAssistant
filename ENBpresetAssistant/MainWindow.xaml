@@ -11,22 +11,23 @@
     Background="{DynamicResource MaterialDesignPaper}"
     mc:Ignorable="d"
     Title="ENBpresetAssistant" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None">
+
     <Grid>
-        <materialDesign:DialogHost DialogClosing="DialogHost_DialogClosing">
-                <materialDesign:DialogHost.DialogContent>
+        <materialDesign:DialogHost SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}" DialogClosing="DialogHost_DialogClosing">
+            <materialDesign:DialogHost.DialogContent>
                     <StackPanel Margin="30">
                         <TextBlock FontSize="20">Are you sure to Exit?</TextBlock>
                         <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
                                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                                Margin="16 8 8 0" FontSize="15">
+                                Margin="16 10 10 0" FontSize="15">
                                 <Button.CommandParameter>
                                     <system:Boolean>True</system:Boolean>
                                 </Button.CommandParameter>
                                 Yes
                             </Button>
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Margin="16 8 8 0"
+                                Margin="16 10 10 0"
                                 Command="materialDesign:DialogHost.CloseDialogCommand" FontSize="15">
                                 <Button.CommandParameter>
                                     <system:Boolean>False</system:Boolean>
@@ -35,41 +36,68 @@
                             </Button>
                         </StackPanel>
                     </StackPanel>
-                </materialDesign:DialogHost.DialogContent>
+            </materialDesign:DialogHost.DialogContent>
 
-            <DockPanel>
-                <!--标题栏-->
-                <materialDesign:ColorZone 
+            <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
+                <!--设置左侧边栏-->
+                <materialDesign:DrawerHost.LeftDrawerContent>
+                    <DockPanel MinWidth="140">
+                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" 
+                                    DockPanel.Dock="Top"
+                                    Width="30" Height="30"
+                                    HorizontalAlignment="Right" Margin="16"
+                                    IsChecked="{Binding ElementName=MenuToggleButton, Path=IsChecked, Mode=TwoWay}" />
+                        <ListBox x:Name="MenuListBox" Margin="0 16 0 16" SelectedIndex="0"                         
+                             ItemsSource="{Binding MenuLists}"
+                             PreviewMouseLeftButtonUp="MenuListBox_PreviewMouseLeftButtonUp">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Name}" Margin="32 0 32 0" />
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </DockPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+
+                <DockPanel>
+                    <!--标题栏-->
+                    <materialDesign:ColorZone 
                     Padding="10" Height="50" 
                     materialDesign:ShadowAssist.ShadowDepth="Depth2" 
                     Mode="PrimaryMid" 
                     DockPanel.Dock="Top" 
                     MouseLeftButtonDown="ColorZone_MouseLeftButtonDown">
-                    <DockPanel>
-                        <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" IsChecked="False" x:Name="MenuToggleButton" Width="30" Height="30"/>
+                        <DockPanel>
+                            <ToggleButton Style="{StaticResource MaterialDesignHamburgerToggleButton}" x:Name="MenuToggleButton" IsChecked="False" Width="30" Height="30"/>
 
-                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
+                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}" 
                             ToolTip="Close" 
                             VerticalAlignment="Center" 
                             DockPanel.Dock="Right"  
                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
                             Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                             Width="30" Height="30">
-                            <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
-                        </Button>
+                                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+                            </Button>
 
-                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">ENBpresetAssistant</TextBlock>
-                        <!--利用Dockpanel的lastchild属性使标题充满并居中-->
-                    </DockPanel>
-                </materialDesign:ColorZone>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">ENBpresetAssistant</TextBlock>
+                            <!--利用Dockpanel的lastchild属性使标题充满-->
+                        </DockPanel>
+                    </materialDesign:ColorZone>
 
-                <Grid>
-                    <ScrollViewer>
+                    <Grid>
+                        <ScrollViewer 
+                        HorizontalScrollBarVisibility="Auto"
+                        VerticalScrollBarVisibility="Auto"
+                        x:Name="ShowEnbArea">
+                            <ContentControl Content="{Binding ElementName=MenuListBox, Path=SelectedItem.Content}"/>
+                        </ScrollViewer>
+                        <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"/>
+                    </Grid>
+                </DockPanel>
+            </materialDesign:DrawerHost>
 
-                    </ScrollViewer>
-                    <materialDesign:Snackbar MessageQueue="{materialDesign:MessageQueue}" x:Name="MainSnackbar"/>
-                </Grid>
-            </DockPanel>
+            
         </materialDesign:DialogHost>
     </Grid>
 </Window>
