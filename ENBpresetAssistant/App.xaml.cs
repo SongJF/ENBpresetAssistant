@@ -20,7 +20,7 @@ namespace ENBpresetAssistant
            
             if (!mutex.WaitOne(0, false))
             {
-                MessageBox.Show("An instance of ENBpresetAssistant is already running！","ENBpresetAssistant",MessageBoxButton.OK,MessageBoxImage.Information,);
+                MessageBox.Show("An instance of ENBpresetAssistant is already running！","ENBpresetAssistant",MessageBoxButton.OK,MessageBoxImage.Information);
                 this.Shutdown();
             }
             base.OnStartup(e);

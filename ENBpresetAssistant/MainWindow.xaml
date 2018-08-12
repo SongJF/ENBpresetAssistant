@@ -10,7 +10,11 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Background="{DynamicResource MaterialDesignPaper}"
     mc:Ignorable="d"
-    Title="ENBpresetAssistant" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None">
+    Title="ENBpresetAssistant" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True"
+    BorderThickness="7">
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="3" BlurRadius="6" Direction="270" Opacity="0.75" Color="#FF211613"/>
+    </Window.Effect>
 
     <Grid>
         <materialDesign:DialogHost SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}" DialogClosing="DialogHost_DialogClosing">

@@ -39,7 +39,7 @@ namespace ENBpresetAssistant
         {
             Task.Factory.StartNew(() =>
             {
-                Thread.Sleep(2500);
+                Thread.Sleep(1000);
             }).ContinueWith(t =>
             {
                 //note you can use the message queue from any thread, but just for the demo here we 
