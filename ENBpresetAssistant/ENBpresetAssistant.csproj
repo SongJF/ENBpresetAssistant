@@ -48,6 +48,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -74,6 +75,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Data\PathsSettings.cs" />
+    <Compile Include="Data\ThemeSettings.cs" />
+    <Compile Include="Domain\AnotherCommandImplementation.cs" />
     <Compile Include="Domain\MainWindowViewModel.cs" />
     <Compile Include="Domain\MenuList.cs" />
     <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
@@ -95,6 +99,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Tools\FileCheck.cs" />
+    <Compile Include="Tools\JsonOperate.cs" />
+    <Compile Include="Tools\ThemeChange.cs" />
     <Compile Include="Pages\EnbCores.xaml.cs">
       <DependentUpon>EnbCores.xaml</DependentUpon>
     </Compile>
@@ -134,8 +141,5 @@
     <Resource Include="E.ico" />
   </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Resource Include="Resource\Images\E.ico" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

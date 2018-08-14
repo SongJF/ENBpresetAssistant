@@ -33,7 +33,7 @@ namespace ENBpresetAssistant
         }
 
         /// <summary>
-        /// 开始的
+        /// 开始欢迎
         /// </summary>
         private SnackbarMessageQueue Welcome()
         {
