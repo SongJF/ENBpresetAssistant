@@ -7,11 +7,21 @@ using System.Threading.Tasks;
 
 using MaterialDesignColors;
 using MaterialDesignThemes.Wpf;
+using ENBpresetAssistant.Data;
 
 namespace ENBpresetAssistant.Tools
 {
-    public class ThemeChange
-    {      
+    public class ThemeHelper
+    {
+        /// <summary>
+        /// 设置主题明暗
+        /// </summary>
+        public static void ApplyTheme()
+        {
+            new PaletteHelper().SetLightDark(SettingsData.isDark);
+            new PaletteHelper().ReplacePrimaryColor(SettingsData.ThemeColor);
+        }
+
         /// <summary>
         /// 设置主题明暗
         /// </summary>

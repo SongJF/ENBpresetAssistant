@@ -46,6 +46,9 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.4.0.1044, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.4.0.1044\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -75,8 +78,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Data\PathsSettings.cs" />
-    <Compile Include="Data\ThemeSettings.cs" />
+    <Compile Include="Data\SettingsData.cs" />
     <Compile Include="Domain\AnotherCommandImplementation.cs" />
     <Compile Include="Domain\MainWindowViewModel.cs" />
     <Compile Include="Domain\MenuList.cs" />
@@ -100,8 +102,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tools\FileCheck.cs" />
-    <Compile Include="Tools\JsonOperate.cs" />
-    <Compile Include="Tools\ThemeChange.cs" />
+    <Compile Include="Tools\SettingsHelper.cs" />
+    <Compile Include="Tools\ThemeHelper.cs" />
     <Compile Include="Pages\EnbCores.xaml.cs">
       <DependentUpon>EnbCores.xaml</DependentUpon>
     </Compile>

@@ -40,7 +40,7 @@ namespace ENBpresetAssistant.Pages
 
             if (SwatchColor == null) return;
 
-            ThemeChange.ApplyPrimary(SwatchColor);
+            ThemeHelper.ApplyPrimary(SwatchColor);
         }
 
         private void BackGround_Click(object sender, RoutedEventArgs e)
@@ -58,7 +58,7 @@ namespace ENBpresetAssistant.Pages
                     isDark = false;
                     break;
             }
-            ThemeChange.ApplyBase(isDark);
+            ThemeHelper.ApplyBase(isDark);
         }
 
         private void Path_Click(object sender, RoutedEventArgs e)
@@ -66,7 +66,6 @@ namespace ENBpresetAssistant.Pages
             var thisButton = sender as Button;
             string Path = OpenFolderDialog();
             if (Path == null) return;
-
 
         }
 

@@ -17,6 +17,7 @@ using MaterialDesignThemes.Wpf;
 using System.Threading;
 using System.Windows.Controls.Primitives;
 using ENBpresetAssistant.Domain;
+using ENBpresetAssistant.Tools;
 
 namespace ENBpresetAssistant
 {
@@ -30,6 +31,8 @@ namespace ENBpresetAssistant
             InitializeComponent();
 
             DataContext = new MainWindowViewModel(Welcome());  //数据绑定
+
+            if (!SettingsHelper.ReadSettings()) MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
         }
 
         /// <summary>
