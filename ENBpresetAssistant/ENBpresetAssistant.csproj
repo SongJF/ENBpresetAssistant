@@ -82,7 +82,6 @@
     <Compile Include="Domain\AnotherCommandImplementation.cs" />
     <Compile Include="Domain\MainWindowViewModel.cs" />
     <Compile Include="Domain\MenuList.cs" />
-    <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -102,6 +101,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Tools\FileCheck.cs" />
+    <Compile Include="Tools\NotifyPropertyChangedExtension.cs" />
     <Compile Include="Tools\SettingsHelper.cs" />
     <Compile Include="Tools\ThemeHelper.cs" />
     <Compile Include="Pages\EnbCores.xaml.cs">

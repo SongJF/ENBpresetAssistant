@@ -33,10 +33,15 @@ namespace ENBpresetAssistant.Tools
             JObject Settings = (JObject)JsonConvert.DeserializeObject(JsonString);
 
             if (!SetGlobalSettings(Settings)) return false;
-            Save(SettingsPath);
             return true;
         }
 
+        /// <summary>
+        /// 修改设置
+        /// </summary>
+        /// <param name="option">修改项</param>
+        /// <param name="value">修改值</param>
+        /// <returns></returns>
         public static bool ModifySettings(string option,string value)
         {
             try
@@ -132,8 +137,6 @@ namespace ENBpresetAssistant.Tools
         {
             try
             {
-                var x = GetJsonInString();
-
                 File.WriteAllText(SettingsPath, GetJsonInString());
             }
             catch
@@ -163,6 +166,7 @@ namespace ENBpresetAssistant.Tools
             jw.WriteValue(SettingsData.ENBCoresPath);
             jw.WritePropertyName("ENBPresetPath");
             jw.WriteValue(SettingsData.ENBPresetPath);
+            jw.WriteEndObject();
             jw.Flush();
 
             return JsonString.GetStringBuilder().ToString();

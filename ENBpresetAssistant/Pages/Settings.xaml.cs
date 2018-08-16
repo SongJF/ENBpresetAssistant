@@ -30,6 +30,8 @@ namespace ENBpresetAssistant.Pages
             InitializeComponent();
 
             Swatches = new SwatchesProvider().Swatches;
+
+            DataContext = new Data.SettingsData();
         }
 
         private void Theme_Click(object sender, RoutedEventArgs e)

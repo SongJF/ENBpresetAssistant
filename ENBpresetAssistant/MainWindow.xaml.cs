@@ -32,7 +32,13 @@ namespace ENBpresetAssistant
 
             DataContext = new MainWindowViewModel(Welcome());  //数据绑定
 
-            if (!SettingsHelper.ReadSettings()) MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
+            if (!SettingsHelper.ReadSettings())
+            {
+                MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
+                Data.SettingsData.isDark = false;
+                Data.SettingsData.ThemeColor = "brown";
+            }
+            ThemeHelper.ApplyTheme();
         }
 
         /// <summary>

@@ -14,7 +14,7 @@ namespace ENBpresetAssistant.Tools
     public class ThemeHelper
     {
         /// <summary>
-        /// 设置主题明暗
+        /// 设置整体主题
         /// </summary>
         public static void ApplyTheme()
         {
