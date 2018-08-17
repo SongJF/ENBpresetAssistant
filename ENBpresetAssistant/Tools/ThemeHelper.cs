@@ -16,28 +16,55 @@ namespace ENBpresetAssistant.Tools
         /// <summary>
         /// 设置整体主题
         /// </summary>
-        public static void ApplyTheme()
+        public static bool ApplyTheme()
         {
-            new PaletteHelper().SetLightDark(SettingsData.isDark);
-            new PaletteHelper().ReplacePrimaryColor(SettingsData.ThemeColor);
+            try
+            {
+                new PaletteHelper().SetLightDark(SettingsData.isDark);
+                new PaletteHelper().ReplacePrimaryColor(SettingsData.ThemeColor);
+                return true;
+            }
+            catch(Exception e)
+            {
+                Console.Write(e);
+                return false;
+            }
         }
 
         /// <summary>
         /// 设置主题明暗
         /// </summary>
         /// <param name="isDark"></param>
-        public static void ApplyBase(bool isDark)
+        public static bool ApplyBase(bool isDark)
         {
-            new PaletteHelper().SetLightDark(isDark);
+            try
+            {
+                new PaletteHelper().SetLightDark(isDark);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                return false;
+            }
         }
 
         /// <summary>
         /// 设置主色
         /// </summary>
         /// <param name="swatch"></param>
-        public static void ApplyPrimary(Swatch swatch)
+        public static bool ApplyPrimary(Swatch swatch)
         {
-            new PaletteHelper().ReplacePrimaryColor(swatch);
+            try
+            {
+                new PaletteHelper().ReplacePrimaryColor(swatch);
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                return false;
+            }
         }
     }
 }

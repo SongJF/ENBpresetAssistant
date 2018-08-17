@@ -16,7 +16,7 @@ namespace ENBpresetAssistant.Tools
         /// <param name="Path">查询的路径</param>
         /// <param name="mode">匹配一个或全匹配</param>
         /// <returns></returns>
-        public bool ExistOrNot(IEnumerable<string> Files,string Path,int mode)
+        public static bool FileExistOrNot(List<string> Files,string Path,int mode)
         {
             if (!Directory.Exists(Path)) return false;
             
@@ -25,7 +25,7 @@ namespace ENBpresetAssistant.Tools
                 foreach (var FileName in Files)
                 {
                     string FullName = Path + "\\" + FileName;
-                    if (File.Exists(FileName)) return true;
+                    if (File.Exists(FullName)) return true;
                 }
                 return false;
             }
@@ -36,6 +36,22 @@ namespace ENBpresetAssistant.Tools
                 if (!File.Exists(FileName)) return false;
             }
             return true;
+        }
+
+        public static bool PathAvailableOrNot(string Path)
+        {
+            if (Directory.Exists(Path)) return true;
+
+            try
+            {
+                Directory.CreateDirectory(Path);
+                MainWindow.Snackbar.MessageQueue.Enqueue("Path do not exist.A new folder has been created!");
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

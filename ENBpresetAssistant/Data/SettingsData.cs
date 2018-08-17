@@ -24,18 +24,11 @@
             set { _TESVPath = value; }
         }
 
-        private static string _ENBPresetPath;
-        public static string ENBPresetPath
+        private static string _StoragePath;
+        public static string StoragePath
         {
-            get { return _ENBPresetPath; }
-            set { _ENBPresetPath = value; }
-        }
-
-        private static string _ENBCoresPath;
-        public static string ENBCoresPath
-        {
-            get { return _ENBCoresPath; }
-            set { _ENBCoresPath = value; }
+            get { return _StoragePath; }
+            set { _StoragePath = value; }
         }
     }
 }

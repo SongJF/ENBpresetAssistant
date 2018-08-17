@@ -26,6 +26,7 @@ namespace ENBpresetAssistant
     /// </summary>
     public partial class MainWindow :Window
     {
+        public static Snackbar Snackbar;
         public MainWindow()
         {
             InitializeComponent();
@@ -38,7 +39,9 @@ namespace ENBpresetAssistant
                 Data.SettingsData.isDark = false;
                 Data.SettingsData.ThemeColor = "brown";
             }
-            ThemeHelper.ApplyTheme();
+            if(!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
+
+            Snackbar = this.MainSnackbar;
         }
 
         /// <summary>

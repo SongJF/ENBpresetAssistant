@@ -21,7 +21,7 @@
                     <DockPanel  VerticalAlignment="Center" Margin="10,0">
                         <DockPanel Margin="10,10,0,10">
                             <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Light</TextBlock>
-                            <ToggleButton Margin="8 0 16 0"  Click="BackGround_Click" IsChecked="{Binding isDark}" x:Name="BG_Toggle"/>
+                            <ToggleButton Margin="8 0 16 0"  Click="BackGround_Click" IsChecked="{Binding isDark}" />
                             <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Dark</TextBlock>
                         </DockPanel>
                         <DockPanel Margin="10,0,10,0">
@@ -71,48 +71,36 @@
                     <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">Theme</TextBlock>
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="7*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
                         <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="0" Margin="10">TESV</TextBlock>
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="1" Margin="10">ENB Cores</TextBlock>
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="2" Margin="10">ENB Presets</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="1" Margin="10">Storage</TextBlock>
 
-                        <TextBox materialDesign:HintAssist.Hint="The Elder Scrolls V Path" Text="{Binding TESVPath}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="0" Margin="10" LostFocus="TextBox_LostFocus"/>
-                        <TextBox materialDesign:HintAssist.Hint="ENBCores Storge Path" Text="{Binding ENBCoresPath}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="1" Margin="10" LostFocus="TextBox_LostFocus"/>
-                        <TextBox materialDesign:HintAssist.Hint="ENBPresets Storge Path" Text="{Binding ENBPresetPath}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="2" Margin="10" LostFocus="TextBox_LostFocus"/>
+                        <TextBox materialDesign:HintAssist.Hint="The Elder Scrolls V Path" Text="{Binding TESVPath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="0" Margin="10" LostFocus="TESVTextBox_LostFocus" x:Name="TESVPath"/>
+                        <TextBox materialDesign:HintAssist.Hint="Storge Path" Text="{Binding StoragePath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="1" Margin="10" LostFocus="StorageTextBox_LostFocus" x:Name="StoragePath"/>
 
                         <Button
                             Style="{StaticResource MaterialDesignRaisedButton}"
-                            Click="Path_Click"
+                            Click="TESVPath_Click"
                             ToolTip="MaterialDesignFlatButton"
                             Margin="10"
                             Grid.Column="2" Grid.Row="0"
-                            Name="TESVBtn">
+                            VerticalAlignment="Bottom">
                             <materialDesign:PackIcon Kind="FolderOpen" />
                         </Button>
                         <Button
                             Style="{StaticResource MaterialDesignRaisedButton}"
-                            Click="Path_Click"
+                            Click="StoragePath_Click"
                             ToolTip="MaterialDesignFlatButton"
                             Margin="10"
                             Grid.Column="2" Grid.Row="1"
-                            Name="CoreBtn">
-                            <materialDesign:PackIcon Kind="FolderOpen" />
-                        </Button>
-                        <Button
-                            Style="{StaticResource MaterialDesignRaisedButton}"
-                            Click="Path_Click"
-                            ToolTip="MaterialDesignFlatButton"
-                            Margin="10"
-                            Grid.Column="2" Grid.Row="2"
-                            Name="PresetBtn">
+                            VerticalAlignment="Bottom">
                             <materialDesign:PackIcon Kind="FolderOpen" />
                         </Button>
                     </Grid>

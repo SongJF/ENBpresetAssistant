@@ -47,11 +47,12 @@ namespace ENBpresetAssistant.Tools
             try
             {
                 string SettingsPath = Directory.GetCurrentDirectory() + "\\Setings.Json";
-                SetGlobal(option, value);
+                if (!SetGlobal(option, value)) throw new ArgumentOutOfRangeException("Unvalid Setting Option");
                 Save(SettingsPath);
             }
             catch
             {
+                MainWindow.Snackbar.MessageQueue.Enqueue("Faild to Save");
                 return false;
             }
 
@@ -74,6 +75,7 @@ namespace ENBpresetAssistant.Tools
             }
             catch
             {
+                InitGlobal();
                 return false;
             }
             return true;
@@ -98,11 +100,8 @@ namespace ENBpresetAssistant.Tools
                 case "TESVPath":
                     SettingsData.TESVPath = value;
                     break;
-                case "ENBCoresPath":
-                    SettingsData.ENBCoresPath = value;
-                    break;
-                case "ENBPresetPath":
-                    SettingsData.ENBPresetPath = value;
+                case "StoragePath":
+                    SettingsData.StoragePath = value;
                     break;
                 default:
                     return false;
@@ -162,10 +161,8 @@ namespace ENBpresetAssistant.Tools
             jw.WriteValue(SettingsData.ThemeColor);
             jw.WritePropertyName("TESVPath");
             jw.WriteValue(SettingsData.TESVPath);
-            jw.WritePropertyName("ENBCoresPath");
-            jw.WriteValue(SettingsData.ENBCoresPath);
-            jw.WritePropertyName("ENBPresetPath");
-            jw.WriteValue(SettingsData.ENBPresetPath);
+            jw.WritePropertyName("StoragePath");
+            jw.WriteValue(SettingsData.StoragePath);
             jw.WriteEndObject();
             jw.Flush();
 
@@ -175,12 +172,21 @@ namespace ENBpresetAssistant.Tools
         /// <summary>
         /// 初始化全局设置
         /// </summary>
-        private static void InitGlobal()
+        private static bool InitGlobal()
         {
-            SetGlobal("isDark", "false");
-            SetGlobal("ThemeColor", "brown");
-            SetGlobal("ENBCoresPath", Directory.GetCurrentDirectory() + "\\Cores");
-            SetGlobal("ENBPresetPath", Directory.GetCurrentDirectory() + "\\Preset");
+            try
+            {
+                SetGlobal("isDark", "false");
+                SetGlobal("ThemeColor", "brown");
+                SetGlobal("StoragePath", Directory.GetCurrentDirectory() + "\\Storage");
+                Save(Directory.GetCurrentDirectory() + "\\Setings.Json");
+            }
+            catch
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }
