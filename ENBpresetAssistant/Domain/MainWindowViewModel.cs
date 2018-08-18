@@ -19,9 +19,9 @@ namespace ENBpresetAssistant.Domain
 
             MenuLists = new[]
             {
-                new MenuList("EnbPresets",new EnbPresets()),
-                new MenuList("EnbCores",new EnbCores()),
-                new MenuList("Settings",new Settings())
+                new MenuList(Tools.LocalizedHelper.GetLocalizedString("EnbPresets","MainStr"),new EnbPresets()),
+                new MenuList(Tools.LocalizedHelper.GetLocalizedString("EnbCores","MainStr"),new EnbCores()),
+                new MenuList(Tools.LocalizedHelper.GetLocalizedString("Settings","MainStr"),new Settings())
             };
         }
     }

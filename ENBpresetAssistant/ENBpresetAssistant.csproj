@@ -111,11 +111,6 @@
     <Compile Include="Domain\AnotherCommandImplementation.cs" />
     <Compile Include="Domain\MainWindowViewModel.cs" />
     <Compile Include="Domain\MenuList.cs" />
-    <Compile Include="Lang\SettingsStr,zh-CN.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SettingsStr,zh-CN.resx</DependentUpon>
-    </Compile>
     <Compile Include="Lang\SettingsStr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -185,9 +180,8 @@
       <LastGenOutput>PresetStr.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Lang\PresetStr.zh-CN.resx" />
-    <EmbeddedResource Include="Lang\SettingsStr,zh-CN.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>SettingsStr,zh-CN.Designer.cs</LastGenOutput>
+    <EmbeddedResource Include="Lang\SettingsStr.zh-CN.resx">
+      <LastGenOutput>SettingsStr.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Lang\SettingsStr.resx">
       <Generator>ResXFileCodeGenerator</Generator>

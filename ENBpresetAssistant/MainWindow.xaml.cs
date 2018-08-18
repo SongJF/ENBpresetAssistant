@@ -29,17 +29,11 @@ namespace ENBpresetAssistant
         public static Snackbar Snackbar;
         public MainWindow()
         {
+            InitSettings();
+
             InitializeComponent();
 
             DataContext = new MainWindowViewModel(Welcome());  //数据绑定
-
-            if (!SettingsHelper.ReadSettings())
-            {
-                MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
-                Data.SettingsData.isDark = false;
-                Data.SettingsData.ThemeColor = "brown";
-            }
-            if(!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue("Failed To Get Settings");
 
             Snackbar = this.MainSnackbar;
         }
@@ -56,7 +50,7 @@ namespace ENBpresetAssistant
             {
                 //note you can use the message queue from any thread, but just for the demo here we 
                 //need to get the message queue from the snackbar, so need to be on the dispatcher
-                MainSnackbar.MessageQueue.Enqueue("Welcome to ENBpresetAssistant");
+                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("WelcomMSG", "MainStr"));
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
             return MainSnackbar.MessageQueue;
@@ -95,6 +89,22 @@ namespace ENBpresetAssistant
             }
 
             MenuToggleButton.IsChecked = false;
+        }
+
+        /// <summary>
+        /// 初始化设置
+        /// </summary>
+        private void InitSettings()
+        {
+            if (!SettingsHelper.ReadSettings())
+            {
+                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Get_Settings", "MainStr"));
+                Data.SettingsData.isDark = false;
+                Data.SettingsData.ThemeColor = "brown";
+            }
+            if (!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Apply_Theme", "MainStr"));
+
+            LocalizedHelper.ChangeLanguage(Data.SettingsData.Laguage);
         }
     }
 }

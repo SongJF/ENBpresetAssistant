@@ -61,6 +61,69 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 Are You Sure To Exit? 的本地化字符串。
+        /// </summary>
+        internal static string Are_You_Sure_To_Exit {
+            get {
+                return ResourceManager.GetString("Are_You_Sure_To_Exit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 EnbCores 的本地化字符串。
+        /// </summary>
+        internal static string EnbCores {
+            get {
+                return ResourceManager.GetString("EnbCores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 EnbPresets 的本地化字符串。
+        /// </summary>
+        internal static string EnbPresets {
+            get {
+                return ResourceManager.GetString("EnbPresets", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed To Apply Theme 的本地化字符串。
+        /// </summary>
+        internal static string Failed_To_Apply_Theme {
+            get {
+                return ResourceManager.GetString("Failed_To_Apply_Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed To Get Settings 的本地化字符串。
+        /// </summary>
+        internal static string Failed_To_Get_Settings {
+            get {
+                return ResourceManager.GetString("Failed_To_Get_Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 No 的本地化字符串。
+        /// </summary>
+        internal static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Settings 的本地化字符串。
+        /// </summary>
+        internal static string Settings {
+            get {
+                return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 ENBpresetAssistant 的本地化字符串。
         /// </summary>
         internal static string Title {
@@ -75,6 +138,15 @@ namespace ENBpresetAssistant.Lang {
         internal static string WelcomMSG {
             get {
                 return ResourceManager.GetString("WelcomMSG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Yes 的本地化字符串。
+        /// </summary>
+        internal static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

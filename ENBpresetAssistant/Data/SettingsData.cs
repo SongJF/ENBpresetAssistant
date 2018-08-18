@@ -16,6 +16,13 @@
             set { _ThemeColor = value; }
         }
 
+        private static string _Language;
+        public static string Laguage
+        {
+            get { return _Language; }
+            set { _Language = value; }
+        }
+
 
         private static string _TESVPath;
         public static string TESVPath

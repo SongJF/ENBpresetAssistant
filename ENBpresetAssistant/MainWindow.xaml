@@ -25,24 +25,24 @@
         <materialDesign:DialogHost SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}" DialogClosing="DialogHost_DialogClosing">
             <materialDesign:DialogHost.DialogContent>
                     <StackPanel Margin="30">
-                        <TextBlock FontSize="20">Are you sure to Exit?</TextBlock>
-                        <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="{lex:Loc Are_You_Sure_To_Exit}"/>
+                    <StackPanel Orientation="Horizontal">
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
                                 Command="materialDesign:DialogHost.CloseDialogCommand"
-                                Margin="16 10 10 0" FontSize="15">
-                                <Button.CommandParameter>
-                                    <system:Boolean>True</system:Boolean>
-                                </Button.CommandParameter>
-                                Yes
-                            </Button>
+                                Margin="16 16 10 0" FontSize="15"
+                                    Content="{lex:Loc Yes}">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
                             <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                Margin="16 10 10 0"
-                                Command="materialDesign:DialogHost.CloseDialogCommand" FontSize="15">
-                                <Button.CommandParameter>
-                                    <system:Boolean>False</system:Boolean>
-                                </Button.CommandParameter>
-                                No
-                            </Button>
+                                Margin="16 16 10 0"
+                                Command="materialDesign:DialogHost.CloseDialogCommand" FontSize="15"
+                                    Content="{lex:Loc No}">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
                         </StackPanel>
                     </StackPanel>
             </materialDesign:DialogHost.DialogContent>
@@ -61,7 +61,7 @@
                              PreviewMouseLeftButtonUp="MenuListBox_PreviewMouseLeftButtonUp">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Name}" Margin="15 15 32 15" />
+                                    <TextBlock Text="{Binding Name}" Margin="15 15 25 15" />
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
@@ -89,7 +89,7 @@
                                 <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                             </Button>
 
-                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20">ENBpresetAssistant</TextBlock>
+                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" Text="{lex:Loc Title}"/>
                             <!--利用Dockpanel的lastchild属性使标题充满-->
                         </DockPanel>
                     </materialDesign:ColorZone>

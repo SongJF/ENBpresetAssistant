@@ -21,47 +21,80 @@
                 Padding="8"
                 MaxWidth="750"
                 UniformCornerRadius="6">
-                <StackPanel>
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">Theme</TextBlock>
-                    <DockPanel  VerticalAlignment="Center" Margin="10,0">
-                        <DockPanel Margin="10,10,0,10">
-                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Light</TextBlock>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{lex:Loc Key=Preference}"/>
+
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <DockPanel Margin="10,10,0,10" Grid.Column="0">
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Text="{lex:Loc Key=ThemeLight}"/>
                             <ToggleButton Margin="8 0 16 0"  Click="BackGround_Click" IsChecked="{Binding isDark}" />
-                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}">Dark</TextBlock>
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Text="{lex:Loc ThemeDark}"/>
                         </DockPanel>
-                        <DockPanel Margin="10,0,10,0">
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    Background="#9E9E9E"
-                                    Name="grey"
-                                    Margin="20,0"
-                                    Click="Theme_Click">
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    Background="#2196F3"
-                                    Name="blue"
-                                    Margin="20,0"
-                                    Click="Theme_Click">
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    Background="#3F51B5"
-                                    Name="indigo"
-                                    Margin="20,0"
-                                    Click="Theme_Click">
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    Background="#795548"
-                                    Name="brown"
-                                    Margin="20,0"
-                                    Click="Theme_Click">
-                            </Button>
-                            <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
-                                    Background="#673AB7"
-                                    Name="deeppurple"
-                                    Margin="20,0"
-                                    Click="Theme_Click">
-                            </Button>
-                        </DockPanel>
-                    </DockPanel>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Background="#9E9E9E"
+                                Name="grey"
+                                Margin="20,0"
+                                Click="Theme_Click"
+                                Grid.Column="1">
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Background="#2196F3"
+                                Name="blue"
+                                Margin="20,0"
+                                Click="Theme_Click"
+                                Grid.Column="2">
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Background="#3F51B5"
+                                Name="indigo"
+                                Margin="20,0"
+                                Click="Theme_Click"
+                                Grid.Column="3">
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Background="#795548"
+                                Name="brown"
+                                Margin="20,0"
+                                Click="Theme_Click"
+                                Grid.Column="4">
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFloatingActionButton}"
+                                Background="#673AB7"
+                                Name="deeppurple"
+                                Margin="20,0"
+                                Click="Theme_Click"
+                                Grid.Column="5">
+                        </Button>
+                    </Grid>
+                    
+
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}"  Margin="10" Text="{lex:Loc Language}" Grid.Column="0"/>
+                        <ComboBox materialDesign:HintAssist.Hint="{lex:Loc Language}" Style="{StaticResource MaterialDesignFloatingHintComboBox}" 
+                                  HorizontalContentAlignment="Center" Margin="10" Grid.Column="1" DropDownClosed="ComboBox_DropDownClosed">
+                            <ComboBoxItem>
+                                中文
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                English
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
                 </StackPanel>
             </materialDesign:Card>
 
@@ -73,7 +106,7 @@
                 MaxWidth="750"
                 UniformCornerRadius="6">
                 <StackPanel>
-                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}">Theme</TextBlock>
+                    <TextBlock Style="{StaticResource MaterialDesignDisplay1TextBlock}" Text="{lex:Loc Paths}"/>
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="1*"/>
@@ -84,11 +117,11 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="0" Margin="10">TESV</TextBlock>
-                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="1" Margin="10">Storage</TextBlock>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="0" Margin="10" Text="{lex:Loc TESV}"/>
+                        <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Grid.Column="0" Grid.Row="1" Margin="10" Text="{lex:Loc Storage}"/>
 
-                        <TextBox materialDesign:HintAssist.Hint="The Elder Scrolls V Path" Text="{Binding TESVPath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="0" Margin="10" LostFocus="TESVTextBox_LostFocus" x:Name="TESVPath"/>
-                        <TextBox materialDesign:HintAssist.Hint="Storge Path" Text="{Binding StoragePath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="1" Margin="10" LostFocus="StorageTextBox_LostFocus" x:Name="StoragePath"/>
+                        <TextBox materialDesign:HintAssist.Hint="{lex:Loc TESVHint}" Text="{Binding TESVPath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="0" Margin="10" LostFocus="TESVTextBox_LostFocus" x:Name="TESVPath"/>
+                        <TextBox materialDesign:HintAssist.Hint="{lex:Loc StorageHint}" Text="{Binding StoragePath, Mode=OneTime}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Grid.Row="1" Margin="10" LostFocus="StorageTextBox_LostFocus" x:Name="StoragePath"/>
 
                         <Button
                             Style="{StaticResource MaterialDesignRaisedButton}"

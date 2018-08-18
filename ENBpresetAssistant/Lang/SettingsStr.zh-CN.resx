@@ -117,34 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Are_You_Sure_To_Exit" xml:space="preserve">
-    <value>你确定要退出吗?</value>
+  <data name="Failed_To_Create_New_Folder" xml:space="preserve">
+    <value>创建新文件夹失败</value>
   </data>
-  <data name="EnbCores" xml:space="preserve">
-    <value>ENB核心</value>
+  <data name="Failed_To_Save" xml:space="preserve">
+    <value>保存失败</value>
   </data>
-  <data name="EnbPresets" xml:space="preserve">
-    <value>ENB预设</value>
+  <data name="Language" xml:space="preserve">
+    <value>语言</value>
   </data>
-  <data name="Failed_To_Apply_Theme" xml:space="preserve">
-    <value>应用主题失败</value>
+  <data name="Not_TESV_Folder" xml:space="preserve">
+    <value>非TESV文件夹</value>
   </data>
-  <data name="Failed_To_Get_Settings" xml:space="preserve">
-    <value>获取设置文件失败</value>
+  <data name="Paths" xml:space="preserve">
+    <value>路径</value>
   </data>
-  <data name="No" xml:space="preserve">
-    <value>否</value>
+  <data name="Path_Does_Not_Exist" xml:space="preserve">
+    <value>路径不存在</value>
   </data>
-  <data name="Settings" xml:space="preserve">
-    <value>设置</value>
+  <data name="Preference" xml:space="preserve">
+    <value>外观</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>ENB预设助手</value>
+  <data name="Settins_Saved" xml:space="preserve">
+    <value>设置已保存</value>
   </data>
-  <data name="WelcomMSG" xml:space="preserve">
-    <value>欢迎来到ENB预设助手</value>
+  <data name="Storage" xml:space="preserve">
+    <value>存储</value>
   </data>
-  <data name="Yes" xml:space="preserve">
-    <value>是</value>
+  <data name="StorageHint" xml:space="preserve">
+    <value>你的ENB预设与核心将在这里存储</value>
+  </data>
+  <data name="TESV" xml:space="preserve">
+    <value>上古卷轴</value>
+  </data>
+  <data name="TESVHint" xml:space="preserve">
+    <value>上古卷轴路径</value>
+  </data>
+  <data name="ThemeDark" xml:space="preserve">
+    <value>暗</value>
+  </data>
+  <data name="ThemeLight" xml:space="preserve">
+    <value>亮</value>
+  </data>
+  <data name="Folder_Created" xml:space="preserve">
+    <value>新文件夹已创建</value>
   </data>
 </root>

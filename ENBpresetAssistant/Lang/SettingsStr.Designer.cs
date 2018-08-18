@@ -59,5 +59,140 @@ namespace ENBpresetAssistant.Lang {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 Failed To Create New Folder 的本地化字符串。
+        /// </summary>
+        internal static string Failed_To_Create_New_Folder {
+            get {
+                return ResourceManager.GetString("Failed_To_Create_New_Folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed To Save 的本地化字符串。
+        /// </summary>
+        internal static string Failed_To_Save {
+            get {
+                return ResourceManager.GetString("Failed_To_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Folder Created 的本地化字符串。
+        /// </summary>
+        internal static string Folder_Created {
+            get {
+                return ResourceManager.GetString("Folder_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Language 的本地化字符串。
+        /// </summary>
+        internal static string Language {
+            get {
+                return ResourceManager.GetString("Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Not TESV Folder 的本地化字符串。
+        /// </summary>
+        internal static string Not_TESV_Folder {
+            get {
+                return ResourceManager.GetString("Not_TESV_Folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Path Does Not Exist 的本地化字符串。
+        /// </summary>
+        internal static string Path_Does_Not_Exist {
+            get {
+                return ResourceManager.GetString("Path_Does_Not_Exist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Paths 的本地化字符串。
+        /// </summary>
+        internal static string Paths {
+            get {
+                return ResourceManager.GetString("Paths", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Preference 的本地化字符串。
+        /// </summary>
+        internal static string Preference {
+            get {
+                return ResourceManager.GetString("Preference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Settins Saved 的本地化字符串。
+        /// </summary>
+        internal static string Settins_Saved {
+            get {
+                return ResourceManager.GetString("Settins_Saved", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Storage 的本地化字符串。
+        /// </summary>
+        internal static string Storage {
+            get {
+                return ResourceManager.GetString("Storage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Your Presets &amp; Cores Storge Here 的本地化字符串。
+        /// </summary>
+        internal static string StorageHint {
+            get {
+                return ResourceManager.GetString("StorageHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TESV 的本地化字符串。
+        /// </summary>
+        internal static string TESV {
+            get {
+                return ResourceManager.GetString("TESV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 The Elder Scrolls V Path 的本地化字符串。
+        /// </summary>
+        internal static string TESVHint {
+            get {
+                return ResourceManager.GetString("TESVHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Dark 的本地化字符串。
+        /// </summary>
+        internal static string ThemeDark {
+            get {
+                return ResourceManager.GetString("ThemeDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Light 的本地化字符串。
+        /// </summary>
+        internal static string ThemeLight {
+            get {
+                return ResourceManager.GetString("ThemeLight", resourceCulture);
+            }
+        }
     }
 }

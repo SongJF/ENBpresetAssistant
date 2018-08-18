@@ -100,7 +100,15 @@ namespace ENBpresetAssistant.Pages
             string Path = OpenFolderDialog();
             if (Path == null) return;
 
-            if (!PathCheck(Path)) return;
+            if (!PathCheck(Path))
+            {
+                if (!(FileCheck.CreateFolder(Path)))
+                {
+                    MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Create_New_Folder", "SettingsStr"));
+                    return;
+                }
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Folder_Created", "SettingsStr"));
+            }
             if (!SettingsHelper.ModifySettings("StoragePath", Path)) return;
 
             StoragePath.Text = Path;
@@ -151,8 +159,13 @@ namespace ENBpresetAssistant.Pages
 
             if (!PathCheck(Path))
             {
-                thisTexBox.Text = Data.SettingsData.StoragePath;
-                return;
+                if (!(FileCheck.CreateFolder(Path)))
+                {
+                    thisTexBox.Text = Data.SettingsData.StoragePath;
+                    MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Create_New_Folder", "SettingsStr"));
+                    return;
+                }
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Folder_Created", "SettingsStr"));
             }
 
             if (!SettingsHelper.ModifySettings(thisTexBox.Name, thisTexBox.Text))
@@ -178,19 +191,19 @@ namespace ENBpresetAssistant.Pages
 
         private void Succeed()
         {
-            MainWindow.Snackbar.MessageQueue.Enqueue("Settins Saved");
+            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Settins_Saved", "SettingsStr"));
         }
 
         private void Failed()
         {
-            MainWindow.Snackbar.MessageQueue.Enqueue("Failed To Save");
+            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Save", "SettingsStr"));
         }
 
         private bool PathCheck(string Path)
         {
             if (!FileCheck.PathAvailableOrNot(Path))
             {
-                MainWindow.Snackbar.MessageQueue.Enqueue("Unvalid Path");
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Path_Does_Not_Exist", "SettingsStr"));
                 return false;
             }
 
@@ -206,11 +219,40 @@ namespace ENBpresetAssistant.Pages
                 };
             if (!FileCheck.FileExistOrNot(TESV, Path, 0))
             {
-                MainWindow.Snackbar.MessageQueue.Enqueue("Not TESV Folder");
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Not_TESV_Folder", "SettingsStr"));
                 return false;
             }
 
             return true;
+        }
+
+
+        private void ComboBox_DropDownClosed(object sender, EventArgs e)
+        {
+            var thisCombo = sender as ComboBox;
+            try
+            {
+                switch (thisCombo.SelectionBoxItem.ToString())
+                {
+                    case "中文":
+                        LocalizedHelper.ChangeLanguage(Data.ID.Chinense);
+                        SettingsHelper.ModifySettings(Data.ID.ST_Language, Data.ID.Chinense);
+                        break;
+                    case "English":
+                        LocalizedHelper.ChangeLanguage(Data.ID.English);
+                        SettingsHelper.ModifySettings(Data.ID.ST_Language, Data.ID.English);
+                        break;
+                    default:
+                        return;
+                }
+            }
+            catch
+            {
+                Failed();
+                return;
+            }
+
+            Succeed();
         }
     }
 }

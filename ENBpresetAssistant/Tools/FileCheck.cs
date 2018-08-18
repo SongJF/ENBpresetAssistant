@@ -42,10 +42,14 @@ namespace ENBpresetAssistant.Tools
         {
             if (Directory.Exists(Path)) return true;
 
+            return false;
+        }
+
+        public static bool CreateFolder(string Path)
+        {
             try
             {
                 Directory.CreateDirectory(Path);
-                MainWindow.Snackbar.MessageQueue.Enqueue("Path do not exist.A new folder has been created!");
                 return true;
             }
             catch

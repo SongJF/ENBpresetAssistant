@@ -52,7 +52,7 @@ namespace ENBpresetAssistant.Tools
             }
             catch
             {
-                MainWindow.Snackbar.MessageQueue.Enqueue("Faild to Save");
+                Console.Write("Faild to Save");
                 return false;
             }
 
@@ -89,23 +89,13 @@ namespace ENBpresetAssistant.Tools
         /// <returns></returns>
         private static bool SetGlobal(string option,string value)
         {
-            switch (option)
-            {
-                case "isDark":
-                    SettingsData.isDark= Convert.ToBoolean(value);
-                    break;
-                case "ThemeColor":
-                    SettingsData.ThemeColor = value;
-                    break;
-                case "TESVPath":
-                    SettingsData.TESVPath = value;
-                    break;
-                case "StoragePath":
-                    SettingsData.StoragePath = value;
-                    break;
-                default:
-                    return false;
-            }
+            if (option == ID.ST_isDark) SettingsData.isDark = Convert.ToBoolean(value);
+            else if (option == ID.ST_ThemeColor) SettingsData.ThemeColor = value;
+            else if (option == ID.ST_Language) SettingsData.Laguage = value;
+            else if (option == ID.ST_TESVPath) SettingsData.TESVPath = value;
+            else if (option == ID.ST_StoragePath) SettingsData.StoragePath = value;
+            else return false;
+
             return true;
         }
 
@@ -155,13 +145,15 @@ namespace ENBpresetAssistant.Tools
             JsonWriter jw=new JsonTextWriter(JsonString);
 
             jw.WriteStartObject();
-            jw.WritePropertyName("isDark");
+            jw.WritePropertyName(ID.ST_isDark);
             jw.WriteValue(SettingsData.isDark);
-            jw.WritePropertyName("ThemeColor");
+            jw.WritePropertyName(ID.ST_ThemeColor);
             jw.WriteValue(SettingsData.ThemeColor);
-            jw.WritePropertyName("TESVPath");
+            jw.WritePropertyName(ID.ST_Language);
+            jw.WriteValue(SettingsData.Laguage);
+            jw.WritePropertyName(ID.ST_TESVPath);
             jw.WriteValue(SettingsData.TESVPath);
-            jw.WritePropertyName("StoragePath");
+            jw.WritePropertyName(ID.ST_StoragePath);
             jw.WriteValue(SettingsData.StoragePath);
             jw.WriteEndObject();
             jw.Flush();
@@ -176,9 +168,10 @@ namespace ENBpresetAssistant.Tools
         {
             try
             {
-                SetGlobal("isDark", "false");
-                SetGlobal("ThemeColor", "brown");
-                SetGlobal("StoragePath", Directory.GetCurrentDirectory() + "\\Storage");
+                SetGlobal(ID.ST_isDark, "false");
+                SetGlobal(ID.ST_ThemeColor, "brown");
+                SetGlobal(ID.ST_Language, ID.English);
+                SetGlobal(ID.ST_StoragePath, Directory.GetCurrentDirectory() + "\\Storage");
                 Save(Directory.GetCurrentDirectory() + "\\Setings.Json");
             }
             catch

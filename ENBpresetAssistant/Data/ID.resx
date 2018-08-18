@@ -123,4 +123,19 @@
   <data name="English" xml:space="preserve">
     <value>en-US</value>
   </data>
+  <data name="ST_isDark" xml:space="preserve">
+    <value>isDark</value>
+  </data>
+  <data name="ST_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="ST_StoragePath" xml:space="preserve">
+    <value>StoragePath</value>
+  </data>
+  <data name="ST_TESVPath" xml:space="preserve">
+    <value>TESVPath</value>
+  </data>
+  <data name="ST_ThemeColor" xml:space="preserve">
+    <value>ThemeColor</value>
+  </data>
 </root>

@@ -77,5 +77,50 @@ namespace ENBpresetAssistant.Data {
                 return ResourceManager.GetString("English", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 isDark 的本地化字符串。
+        /// </summary>
+        public static string ST_isDark {
+            get {
+                return ResourceManager.GetString("ST_isDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Language 的本地化字符串。
+        /// </summary>
+        public static string ST_Language {
+            get {
+                return ResourceManager.GetString("ST_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 StoragePath 的本地化字符串。
+        /// </summary>
+        public static string ST_StoragePath {
+            get {
+                return ResourceManager.GetString("ST_StoragePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TESVPath 的本地化字符串。
+        /// </summary>
+        public static string ST_TESVPath {
+            get {
+                return ResourceManager.GetString("ST_TESVPath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ThemeColor 的本地化字符串。
+        /// </summary>
+        public static string ST_ThemeColor {
+            get {
+                return ResourceManager.GetString("ST_ThemeColor", resourceCulture);
+            }
+        }
     }
 }
