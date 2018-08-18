@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ENBpresetAssistant.Resouce.Strings {
+namespace ENBpresetAssistant.Lang {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ENBpresetAssistant.Resouce.Strings {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ENBpresetAssistant.Resouce.Strings.SettingsStr", typeof(SettingsStr).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ENBpresetAssistant.Lang.SettingsStr", typeof(SettingsStr).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

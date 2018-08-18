@@ -4,6 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ENBpresetAssistant.Pages"
+             xmlns:res="clr-namespace:ENBpresetAssistant.Data"
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:LocalizeDictionary.DesignCulture="{x:Static res:ID.English}"
+             lex:ResxLocalizationProvider.DefaultAssembly="ENBpresetAssistant"
+             lex:ResxLocalizationProvider.DefaultDictionary="PresetStr"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>

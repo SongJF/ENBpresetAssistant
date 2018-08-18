@@ -10,6 +10,11 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     Background="{DynamicResource MaterialDesignPaper}"
     mc:Ignorable="d"
+    xmlns:res="clr-namespace:ENBpresetAssistant.Data"
+    xmlns:lex="http://wpflocalizeextension.codeplex.com"
+    lex:LocalizeDictionary.DesignCulture="{x:Static res:ID.English}"
+    lex:ResxLocalizationProvider.DefaultAssembly="ENBpresetAssistant"
+    lex:ResxLocalizationProvider.DefaultDictionary="MainStr"
     Title="ENBpresetAssistant" Height="500" Width="800" ResizeMode="CanMinimize" WindowStyle="None" AllowsTransparency="True"
     BorderThickness="7">
     <Window.Effect>
