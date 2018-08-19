@@ -61,11 +61,11 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
-        ///   查找类似 23333333 的本地化字符串。
+        ///   查找类似 No Preset Managed 的本地化字符串。
         /// </summary>
-        internal static string Test {
+        internal static string No_Preset_Managed {
             get {
-                return ResourceManager.GetString("Test", resourceCulture);
+                return ResourceManager.GetString("No_Preset_Managed", resourceCulture);
             }
         }
     }

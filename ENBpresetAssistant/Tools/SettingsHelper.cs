@@ -21,12 +21,11 @@ namespace ENBpresetAssistant.Tools
         public static bool ReadSettings()
         {
             string SettingsPath = Directory.GetCurrentDirectory() + "\\Setings.Json";
-            String JsonString = GetJsonFromFile(SettingsPath);
+            String JsonString = JsonHelper.GetJsonFromFile(SettingsPath);
 
             if(JsonString.Length==0)
             {
                 InitGlobal();
-                Save(SettingsPath);
                 return true;
             }
 
@@ -48,7 +47,7 @@ namespace ENBpresetAssistant.Tools
             {
                 string SettingsPath = Directory.GetCurrentDirectory() + "\\Setings.Json";
                 if (!SetGlobal(option, value)) throw new ArgumentOutOfRangeException("Unvalid Setting Option");
-                Save(SettingsPath);
+                JsonHelper.JsonSave(SettingsPath,TransGlobalSettingsToJObject());
             }
             catch
             {
@@ -100,68 +99,6 @@ namespace ENBpresetAssistant.Tools
         }
 
         /// <summary>
-        /// 从本地读取Json文件
-        /// </summary>
-        /// <param name="SettingsPath">Json文件路径</param>
-        /// <returns></returns>
-        private static string GetJsonFromFile(string SettingsPath)
-        {
-            if (!File.Exists(SettingsPath))
-            {
-                var thisFile = File.Create(SettingsPath);
-                thisFile.Close();
-            }
-
-            string JsonString = File.ReadAllText(SettingsPath);
-
-            return JsonString;
-        }
-
-        /// <summary>
-        /// 保存配置文件
-        /// </summary>
-        /// <param name="SettingsPath"></param>
-        /// <returns></returns>
-        private static bool Save(string SettingsPath)
-        {
-            try
-            {
-                File.WriteAllText(SettingsPath, GetJsonInString());
-            }
-            catch
-            {
-                return false;
-            }
-            return true;
-        }
-
-        /// <summary>
-        /// 序列化Json
-        /// </summary>
-        /// <returns></returns>
-        private static string GetJsonInString()
-        {
-            StringWriter JsonString = new StringWriter();
-            JsonWriter jw=new JsonTextWriter(JsonString);
-
-            jw.WriteStartObject();
-            jw.WritePropertyName(ID.ST_isDark);
-            jw.WriteValue(SettingsData.isDark);
-            jw.WritePropertyName(ID.ST_ThemeColor);
-            jw.WriteValue(SettingsData.ThemeColor);
-            jw.WritePropertyName(ID.ST_Language);
-            jw.WriteValue(SettingsData.Laguage);
-            jw.WritePropertyName(ID.ST_TESVPath);
-            jw.WriteValue(SettingsData.TESVPath);
-            jw.WritePropertyName(ID.ST_StoragePath);
-            jw.WriteValue(SettingsData.StoragePath);
-            jw.WriteEndObject();
-            jw.Flush();
-
-            return JsonString.GetStringBuilder().ToString();
-        }
-
-        /// <summary>
         /// 初始化全局设置
         /// </summary>
         private static bool InitGlobal()
@@ -172,7 +109,7 @@ namespace ENBpresetAssistant.Tools
                 SetGlobal(ID.ST_ThemeColor, "brown");
                 SetGlobal(ID.ST_Language, ID.English);
                 SetGlobal(ID.ST_StoragePath, Directory.GetCurrentDirectory() + "\\Storage");
-                Save(Directory.GetCurrentDirectory() + "\\Setings.Json");
+                JsonHelper.JsonSave(Directory.GetCurrentDirectory() + "\\Setings.Json",TransGlobalSettingsToJObject());
             }
             catch
             {
@@ -180,6 +117,19 @@ namespace ENBpresetAssistant.Tools
             }
 
             return true;
+        }
+
+        private static JObject TransGlobalSettingsToJObject()
+        {
+            JObject jObject = new JObject
+            {
+                { ID.ST_isDark, SettingsData.isDark },
+                { ID.ST_ThemeColor,SettingsData.ThemeColor},
+                { ID.ST_Language,SettingsData.Laguage },
+                { ID.ST_TESVPath,SettingsData.TESVPath },
+                { ID.ST_StoragePath,SettingsData.StoragePath }
+            };
+            return jObject;
         }
     }
 }

@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+using ENBpresetAssistant.Data;
+using ENBpresetAssistant.Tools;
+
 namespace ENBpresetAssistant.Pages
 {
     /// <summary>
@@ -23,6 +27,30 @@ namespace ENBpresetAssistant.Pages
         public EnbPresets()
         {
             InitializeComponent();
+
+            ShowNoPresetsText();
+        }
+
+        private void GetAllPresets()
+        {
+            string PresetsConfigPath = SettingsData.StoragePath + "\\Presets.Json";
+
+            string PresrtsJson = JsonHelper.GetJsonFromFile(PresetsConfigPath);
+
+            
+        }
+
+        private void ShowNoPresetsText()
+        {
+            TextBlock textBlock = new TextBlock()
+            {
+                Text = LocalizedHelper.GetLocalizedString("No_Preset_Managed", ID.StrRes_Preset),
+                Style = (Style)this.FindResource("MaterialDesignDisplay3TextBlock"),
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+                Foreground = (Brush)this.FindResource("AccentColorBrush2")
+            };
+            MainGrid.Children.Add(textBlock);
         }
     }
 }

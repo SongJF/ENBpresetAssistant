@@ -122,5 +122,41 @@ namespace ENBpresetAssistant.Data {
                 return ResourceManager.GetString("ST_ThemeColor", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 CoreStr 的本地化字符串。
+        /// </summary>
+        public static string StrRes_Core {
+            get {
+                return ResourceManager.GetString("StrRes_Core", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 MainStr 的本地化字符串。
+        /// </summary>
+        public static string StrRes_Main {
+            get {
+                return ResourceManager.GetString("StrRes_Main", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PresetStr 的本地化字符串。
+        /// </summary>
+        public static string StrRes_Preset {
+            get {
+                return ResourceManager.GetString("StrRes_Preset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 SettingsStr 的本地化字符串。
+        /// </summary>
+        public static string StrRes_Settings {
+            get {
+                return ResourceManager.GetString("StrRes_Settings", resourceCulture);
+            }
+        }
     }
 }

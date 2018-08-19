@@ -138,4 +138,16 @@
   <data name="ST_ThemeColor" xml:space="preserve">
     <value>ThemeColor</value>
   </data>
+  <data name="StrRes_Core" xml:space="preserve">
+    <value>CoreStr</value>
+  </data>
+  <data name="StrRes_Main" xml:space="preserve">
+    <value>MainStr</value>
+  </data>
+  <data name="StrRes_Preset" xml:space="preserve">
+    <value>PresetStr</value>
+  </data>
+  <data name="StrRes_Settings" xml:space="preserve">
+    <value>SettingsStr</value>
+  </data>
 </root>

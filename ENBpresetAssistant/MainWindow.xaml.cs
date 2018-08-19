@@ -50,7 +50,7 @@ namespace ENBpresetAssistant
             {
                 //note you can use the message queue from any thread, but just for the demo here we 
                 //need to get the message queue from the snackbar, so need to be on the dispatcher
-                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("WelcomMSG", "MainStr"));
+                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("WelcomMSG", Data.ID.StrRes_Main));
             }, TaskScheduler.FromCurrentSynchronizationContext());
 
             return MainSnackbar.MessageQueue;
@@ -98,11 +98,11 @@ namespace ENBpresetAssistant
         {
             if (!SettingsHelper.ReadSettings())
             {
-                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Get_Settings", "MainStr"));
+                MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Get_Settings", Data.ID.StrRes_Main));
                 Data.SettingsData.isDark = false;
                 Data.SettingsData.ThemeColor = "brown";
             }
-            if (!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Apply_Theme", "MainStr"));
+            if (!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Apply_Theme", Data.ID.StrRes_Main));
 
             LocalizedHelper.ChangeLanguage(Data.SettingsData.Laguage);
         }
