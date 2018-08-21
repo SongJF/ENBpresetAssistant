@@ -150,4 +150,13 @@
   <data name="StrRes_Settings" xml:space="preserve">
     <value>SettingsStr</value>
   </data>
+  <data name="Exe_Skyrim" xml:space="preserve">
+    <value>Skyrim.exe</value>
+  </data>
+  <data name="Exe_SkyrimSE" xml:space="preserve">
+    <value>Skyrim.exe</value>
+  </data>
+  <data name="Preset_ExpText" xml:space="preserve">
+    <value>ExpText</value>
+  </data>
 </root>

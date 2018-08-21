@@ -79,6 +79,33 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
+        ///   查找类似 Skyrim.exe 的本地化字符串。
+        /// </summary>
+        public static string Exe_Skyrim {
+            get {
+                return ResourceManager.GetString("Exe_Skyrim", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Skyrim.exe 的本地化字符串。
+        /// </summary>
+        public static string Exe_SkyrimSE {
+            get {
+                return ResourceManager.GetString("Exe_SkyrimSE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ExpText 的本地化字符串。
+        /// </summary>
+        public static string Preset_ExpText {
+            get {
+                return ResourceManager.GetString("Preset_ExpText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 isDark 的本地化字符串。
         /// </summary>
         public static string ST_isDark {

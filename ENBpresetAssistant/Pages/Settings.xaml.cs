@@ -214,8 +214,8 @@ namespace ENBpresetAssistant.Pages
         {
             List<string> TESV = new List<string>
                 {
-                    "Skyrim.exe",
-                    "SkyrimSE.exe"
+                    Data.ID.Exe_Skyrim,
+                    Data.ID.Exe_SkyrimSE
                 };
             if (!FileCheck.FileExistOrNot(TESV, Path, 0))
             {

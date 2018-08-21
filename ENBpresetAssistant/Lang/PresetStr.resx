@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Btn_Detail" xml:space="preserve">
+    <value>DETAIL</value>
+  </data>
+  <data name="Btn_Return" xml:space="preserve">
+    <value>RETURN</value>
+  </data>
+  <data name="Falied_To_Get_Presets_Info" xml:space="preserve">
+    <value>Falied To Get Presets Info</value>
+  </data>
   <data name="No_Preset_Managed" xml:space="preserve">
     <value>No Preset Managed</value>
+  </data>
+  <data name="State_Available" xml:space="preserve">
+    <value>Available</value>
+  </data>
+  <data name="State_Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Unmanaged_ENB" xml:space="preserve">
+    <value>Unmanaged ENB Is Running . Please Clean And Try Later</value>
   </data>
 </root>

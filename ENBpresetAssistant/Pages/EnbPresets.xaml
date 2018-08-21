@@ -12,12 +12,23 @@
              lex:ResxLocalizationProvider.DefaultDictionary="PresetStr"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Flipper.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid x:Name="MainGrid">
+
+        <WrapPanel x:Name="MainView"/>
+
         <Button 
             Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
             ToolTip="MaterialDesignFloatingActionDarkButton"
-            HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30">
-            <materialDesign:PackIcon Kind="File" Height="24" Width="24" />
+            HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30"
+            Click="InstallButton_Click">
+            <materialDesign:PackIcon Kind="Download" Height="24" Width="24" />
         </Button>
     </Grid>
 </UserControl>

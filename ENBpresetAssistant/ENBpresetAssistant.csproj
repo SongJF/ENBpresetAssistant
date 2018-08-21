@@ -84,6 +84,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ID.resx</DependentUpon>
     </Compile>
+    <Compile Include="Data\PresetData.cs" />
     <Compile Include="Lang\CoreStr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -138,6 +139,7 @@
     <Compile Include="Tools\JsonHelper.cs" />
     <Compile Include="Tools\LocalizedHelper.cs" />
     <Compile Include="Domain\NotifyPropertyChangedExtension.cs" />
+    <Compile Include="Tools\PresetHelper.cs" />
     <Compile Include="Tools\SettingsHelper.cs" />
     <Compile Include="Tools\ThemeHelper.cs" />
     <Compile Include="Pages\EnbCores.xaml.cs">

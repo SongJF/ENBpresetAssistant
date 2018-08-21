@@ -96,7 +96,7 @@
 
                     <Grid>
                         <ScrollViewer 
-                        HorizontalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled"
                         VerticalScrollBarVisibility="Auto"
                         x:Name="ShowEnbArea">
                             <ContentControl Content="{Binding ElementName=MenuListBox, Path=SelectedItem.Content}"/>

@@ -29,7 +29,7 @@ namespace ENBpresetAssistant.Tools
                 return true;
             }
 
-            JObject Settings = (JObject)JsonConvert.DeserializeObject(JsonString);
+            JObject Settings = JsonHelper.TransStrToJObject(JsonString);
 
             if (!SetGlobalSettings(Settings)) return false;
             return true;

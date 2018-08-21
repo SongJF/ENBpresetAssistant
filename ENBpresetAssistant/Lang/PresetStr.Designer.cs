@@ -61,11 +61,65 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 DETAIL 的本地化字符串。
+        /// </summary>
+        internal static string Btn_Detail {
+            get {
+                return ResourceManager.GetString("Btn_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 RETURN 的本地化字符串。
+        /// </summary>
+        internal static string Btn_Return {
+            get {
+                return ResourceManager.GetString("Btn_Return", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Falied To Get Presets Info 的本地化字符串。
+        /// </summary>
+        internal static string Falied_To_Get_Presets_Info {
+            get {
+                return ResourceManager.GetString("Falied_To_Get_Presets_Info", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 No Preset Managed 的本地化字符串。
         /// </summary>
         internal static string No_Preset_Managed {
             get {
                 return ResourceManager.GetString("No_Preset_Managed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Available 的本地化字符串。
+        /// </summary>
+        internal static string State_Available {
+            get {
+                return ResourceManager.GetString("State_Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Running 的本地化字符串。
+        /// </summary>
+        internal static string State_Running {
+            get {
+                return ResourceManager.GetString("State_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Unmanaged ENB Is Running . Please Clean And Try Later 的本地化字符串。
+        /// </summary>
+        internal static string Unmanaged_ENB {
+            get {
+                return ResourceManager.GetString("Unmanaged_ENB", resourceCulture);
             }
         }
     }

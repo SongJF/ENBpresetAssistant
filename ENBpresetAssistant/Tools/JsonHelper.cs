@@ -34,9 +34,10 @@ namespace ENBpresetAssistant.Tools
 
 
         /// <summary>
-        /// 保存Json文件
+        /// 传入JObject保存为Json文件
         /// </summary>
-        /// <param name="SettingsPath"></param>
+        /// <param name="SettingsPath">保存路径</param>
+        /// <param name="jObject"></param>
         /// <returns></returns>
         public static bool JsonSave(string SettingsPath,JObject jObject)
         {
@@ -50,6 +51,25 @@ namespace ENBpresetAssistant.Tools
             }
             return true;
         }
+        /// <summary>
+        /// 传入String保存为Json文件
+        /// </summary>
+        /// <param name="SettingsPath">保存路径</param>
+        /// <param name="JsonStr"></param>
+        /// <returns></returns>
+        public static bool JsonSave(string SettingsPath, string JsonStr)
+        {
+            try
+            {
+                File.WriteAllText(SettingsPath, JsonStr);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
 
         /// <summary>
         /// 序列化Json
@@ -62,15 +82,28 @@ namespace ENBpresetAssistant.Tools
 
 
             jw.WriteStartObject();
-            foreach (var Object in jObject)
+            if(jObject!=null)
             {
-                jw.WritePropertyName(Object.Key);
-                jw.WriteValue(Object.Value);
+                foreach (var Object in jObject)
+                {
+                    jw.WritePropertyName(Object.Key);
+                    jw.WriteValue(Object.Value);
+                }
             }
             jw.WriteEndObject();
             jw.Flush();
 
             return JsonString.GetStringBuilder().ToString();
+        }
+
+        /// <summary>
+        /// 把string类型的Json转化为JObject
+        /// </summary>
+        /// <param name="JsonString"></param>
+        /// <returns></returns>
+        public static JObject TransStrToJObject(string JsonString)
+        {
+            return (JObject)JsonConvert.DeserializeObject(JsonString);
         }
     }
 }
