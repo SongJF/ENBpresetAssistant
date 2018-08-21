@@ -35,6 +35,12 @@ namespace ENBpresetAssistant.Pages
             ShowPresets();
         }
 
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var thisButton = sender as Button;
+            RemoveFromView(thisButton.Tag.ToString());
+        }
+
         /// <summary>
         /// 展示ENB预设
         /// </summary>
@@ -65,7 +71,7 @@ namespace ENBpresetAssistant.Pages
 
             foreach(var Flipper in Flippers)
             {
-                AddToView(Flipper, Flipper.Name);
+                AddToView(Flipper, Flipper.Tag.ToString());
             }
 
 
@@ -120,6 +126,11 @@ namespace ENBpresetAssistant.Pages
             return true;
         }
 
+        /// <summary>
+        /// 创建Flipper
+        /// </summary>
+        /// <param name="presetDatas"></param>
+        /// <returns></returns>
         private List<Flipper> CreateFlippers(List<PresetData> presetDatas)
         {
             List<Flipper> cards = new List<Flipper>();
@@ -140,7 +151,7 @@ namespace ENBpresetAssistant.Pages
                 Margin = new Thickness(30, 20, 30, 20),
                 FrontContent = CreateFrontContent(preset),
                 BackContent = CreateBackContent(preset),
-                Name = preset.PresetName,
+                Tag = preset.PresetName,
                 Width=180,
                 HorizontalContentAlignment=HorizontalAlignment.Center,
                 VerticalContentAlignment=VerticalAlignment.Top
@@ -149,20 +160,25 @@ namespace ENBpresetAssistant.Pages
             return flipper;
         }
 
+        /// <summary>
+        /// 创建Flipper的前展示区
+        /// </summary>
+        /// <param name="preset"></param>
+        /// <returns></returns>
         private UIElement CreateFrontContent(PresetData preset)
         {
             ColorZone TitlecolorZone = new ColorZone() { Mode = ColorZoneMode.PrimaryLight, Height = 30 };
-            TextBlock StateText = new TextBlock() { Text = LocalizedHelper.GetLocalizedString("State_Available", ID.StrRes_Preset), Foreground = (Brush)this.FindResource("AccentColorBrush3"), Margin = new Thickness(10, 10, 10, 10) };
+            TextBlock StateText = new TextBlock() { Text = LocalizedHelper.GetLocalizedString("State_Available", ID.StrRes_Preset), Foreground = (Brush)this.FindResource("AccentColorBrush3"), Margin = new Thickness(10) };
 
-            TextBlock NamText = new TextBlock() { Text = preset.PresetName, Margin = new Thickness(10, 10, 10, 10), Style = (Style)this.FindResource("MaterialDesignTitleTextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
+            TextBlock NamText = new TextBlock() { Text = preset.PresetName, Margin = new Thickness(10), Style = (Style)this.FindResource("MaterialDesignTitleTextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
 
-            TextBlock CoreText = new TextBlock() { Text = preset.Core, Margin = new Thickness(10, 10, 10, 10), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
+            TextBlock CoreText = new TextBlock() { Text = preset.Core, Margin = new Thickness(10), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
 
             TextBlock InstallTime = new TextBlock() { Text = preset.InstallTime.Date.ToString(), Margin = new Thickness(10, 10, 10, 10), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
 
-            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10, 10, 10, 10), Command = Flipper.FlipCommand };
+            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=preset.PresetName};
 
-            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) };
+            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=preset.PresetName};
 
             if (preset.isRunning)
             {
@@ -195,7 +211,7 @@ namespace ENBpresetAssistant.Pages
                     new ColumnDefinition()
                 },
                 VerticalAlignment = VerticalAlignment.Top,
-                Margin = new Thickness(10, 10, 10, 10)
+                Margin = new Thickness(10)
             };
             InfoGrid.Children.Add(CoreText);
             InfoGrid.Children.Add(StateText);
@@ -211,15 +227,21 @@ namespace ENBpresetAssistant.Pages
             return stackPanel;
         }
 
+        /// <summary>
+        /// 创建Flipper的后展示区
+        /// </summary>
+        /// <param name="preset"></param>
+        /// <returns></returns>
         private UIElement CreateBackContent(PresetData preset)
         {
             ColorZone TitlecolorZone = new ColorZone() { Mode = ColorZoneMode.PrimaryLight, Height = 30 };
 
             TreeView FileTree = new TreeView() { Height=200 ,Margin=new Thickness(10)};
 
-            Button DeleteBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Delete }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) };
+            Button DeleteBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Delete }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=preset.PresetName};
+            DeleteBtn.Click += new RoutedEventHandler(DeleteBtn_Click);
 
-            Button ReturnBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Return", ID.StrRes_Preset), Margin = new Thickness(10, 10, 10, 10), Command = Flipper.FlipCommand };
+            Button ReturnBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Return", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=preset.PresetName};
 
             if (preset.isRunning)
             {
@@ -255,7 +277,7 @@ namespace ENBpresetAssistant.Pages
 
         private bool RemoveFromView(string elementID)
         {
-            UIElement uIElement = MainGrid.FindName(elementID) as UIElement;
+            UIElement uIElement = MainView.FindName(elementID) as UIElement;
             if(uIElement!=null)
             {
                 MainView.Children.Remove(uIElement);

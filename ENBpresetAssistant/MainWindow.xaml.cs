@@ -29,13 +29,14 @@ namespace ENBpresetAssistant
         public static Snackbar Snackbar;
         public MainWindow()
         {
-            InitSettings();
-
             InitializeComponent();
+
+            Snackbar = this.MainSnackbar;
+
+            InitSettings();
 
             DataContext = new MainWindowViewModel(Welcome());  //数据绑定
 
-            Snackbar = this.MainSnackbar;
         }
 
         /// <summary>

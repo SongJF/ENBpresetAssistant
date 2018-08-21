@@ -72,7 +72,7 @@ namespace ENBpresetAssistant.Pages
             }
             ThemeHelper.ApplyBase(isDark);
 
-            if (!SettingsHelper.ModifySettings("ThemeColor",isDark.ToString()))
+            if (!SettingsHelper.ModifySettings("isDark",isDark.ToString()))
             {
                 Failed();
                 return;
