@@ -83,7 +83,7 @@ namespace ENBpresetAssistant.Pages
 
         private void TESVPath_Click(object sender, RoutedEventArgs e)
         {
-            string Path = OpenFolderDialog();
+            string Path = FileHelper.OpenFolderDialog();
             if (Path == null) return;
 
             if (!PathCheck(Path)) return;
@@ -97,12 +97,12 @@ namespace ENBpresetAssistant.Pages
 
         private void StoragePath_Click(object sender, RoutedEventArgs e)
         {
-            string Path = OpenFolderDialog();
+            string Path = FileHelper.OpenFolderDialog();
             if (Path == null) return;
 
             if (!PathCheck(Path))
             {
-                if (!(FileCheck.CreateFolder(Path)))
+                if (!(FileHelper.CreateFolder(Path)))
                 {
                     MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Create_New_Folder", "SettingsStr"));
                     return;
@@ -159,7 +159,7 @@ namespace ENBpresetAssistant.Pages
 
             if (!PathCheck(Path))
             {
-                if (!(FileCheck.CreateFolder(Path)))
+                if (!(FileHelper.CreateFolder(Path)))
                 {
                     thisTexBox.Text = Data.SettingsData.StoragePath;
                     MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Create_New_Folder", "SettingsStr"));
@@ -178,17 +178,6 @@ namespace ENBpresetAssistant.Pages
             Succeed();
         }
 
-        private string OpenFolderDialog()
-        {
-            System.Windows.Forms.FolderBrowserDialog m_Dialog = new System.Windows.Forms.FolderBrowserDialog();
-            System.Windows.Forms.DialogResult result = m_Dialog.ShowDialog();
-            if (result == System.Windows.Forms.DialogResult.Cancel)
-            {
-                return null;
-            }
-            return m_Dialog.SelectedPath.Trim();
-        }
-
         private void Succeed()
         {
             MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Settins_Saved", "SettingsStr"));
@@ -201,7 +190,7 @@ namespace ENBpresetAssistant.Pages
 
         private bool PathCheck(string Path)
         {
-            if (!FileCheck.PathAvailableOrNot(Path))
+            if (!FileHelper.PathAvailableOrNot(Path))
             {
                 MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Path_Does_Not_Exist", "SettingsStr"));
                 return false;
@@ -217,7 +206,7 @@ namespace ENBpresetAssistant.Pages
                     Data.ID.Exe_Skyrim,
                     Data.ID.Exe_SkyrimSE
                 };
-            if (!FileCheck.FileExistOrNot(TESV, Path, 0))
+            if (!FileHelper.FileExistOrNot(TESV, Path, 0))
             {
                 MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Not_TESV_Folder", "SettingsStr"));
                 return false;

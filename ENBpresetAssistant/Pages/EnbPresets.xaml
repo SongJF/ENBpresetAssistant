@@ -19,15 +19,15 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </UserControl.Resources>
-    <Grid x:Name="MainGrid">
-
+    <Grid>
+        
         <WrapPanel x:Name="MainView"/>
 
         <Button 
             Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
             ToolTip="MaterialDesignFloatingActionDarkButton"
             HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="30"
-            Click="InstallButton_Click">
+            Click="AddBtn_Click">
             <materialDesign:PackIcon Kind="Download" Height="24" Width="24" />
         </Button>
     </Grid>

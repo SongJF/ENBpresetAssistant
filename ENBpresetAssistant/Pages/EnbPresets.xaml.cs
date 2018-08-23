@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-
+using ENBpresetAssistant.Components;
 using ENBpresetAssistant.Data;
 using ENBpresetAssistant.Tools;
 using MaterialDesignThemes.Wpf;
@@ -39,6 +39,16 @@ namespace ENBpresetAssistant.Pages
         {
             var thisButton = sender as Button;
             RemoveFromView(thisButton.Tag.ToString());
+        }
+
+        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string ZipFile = FileHelper.OpenFileDialog("Zip Files (*.zip)|*.zip");
+            if (String.IsNullOrEmpty(ZipFile)) return;
+            string ZipNane = ZipFile.Substring(ZipFile.LastIndexOf("\\") + 1, ZipFile.LastIndexOf(".") - (ZipFile.LastIndexOf("\\") + 1));
+
+            PresetHelper.TempUnzip(ZipFile);
+            
         }
 
         /// <summary>
@@ -78,6 +88,8 @@ namespace ENBpresetAssistant.Pages
             return true;
         }
 
+        #region 提取方法
+
         /// <summary>
         /// 预设不可用警示文本
         /// </summary>
@@ -99,11 +111,6 @@ namespace ENBpresetAssistant.Pages
             AddToView(textBlock, ID.Preset_ExpText);
         }
 
-        private void InstallButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         /// <summary>
         /// 检测是否有未经管理的ENB正在被使用
         /// </summary>
@@ -121,10 +128,23 @@ namespace ENBpresetAssistant.Pages
                 "enbseries.ini"
             };
 
-            if (FileCheck.FileExistOrNot(Enbitems, SettingsData.TESVPath, 0)) return false;
+            if (FileHelper.FileExistOrNot(Enbitems, SettingsData.TESVPath, 0)) return false;
 
             return true;
         }
+
+        /// <summary>
+        /// SnakeBar 消息
+        /// </summary>
+        /// <param name="MSG"></param>
+        private void SB_Message(string MSG)
+        {
+            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString(MSG, ID.StrRes_Preset));
+        }
+
+        #endregion
+
+        #region Create Flipper
 
         /// <summary>
         /// 创建Flipper
@@ -260,21 +280,26 @@ namespace ENBpresetAssistant.Pages
             return stackPanel;
         }
 
-        /// <summary>
-        /// SnakeBar 消息
-        /// </summary>
-        /// <param name="MSG"></param>
-        private void SB_Message(string MSG)
-        {
-            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString(MSG, ID.StrRes_Preset));
-        }
+        #endregion
 
+        #region Add And Remove Elements
+
+        /// <summary>
+        /// 向UI添加并注册组件
+        /// </summary>
+        /// <param name="uIElement"></param>
+        /// <param name="elementID"></param>
         private void AddToView(UIElement uIElement,string elementID)
         {
             MainView.Children.Add(uIElement);
             MainView.RegisterName(elementID, uIElement);
         }
 
+        /// <summary>
+        /// 从UI中移除组件
+        /// </summary>
+        /// <param name="elementID"></param>
+        /// <returns></returns>
         private bool RemoveFromView(string elementID)
         {
             UIElement uIElement = MainView.FindName(elementID) as UIElement;
@@ -286,5 +311,6 @@ namespace ENBpresetAssistant.Pages
             }
             return false;
         }
+        #endregion
     }
 }

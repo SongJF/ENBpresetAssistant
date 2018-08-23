@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
+using ENBpresetAssistant.Components;
 using ENBpresetAssistant.Data;
+using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace ENBpresetAssistant.Tools
 {
@@ -28,13 +28,17 @@ namespace ENBpresetAssistant.Tools
                 var Presets = JsonConvert.DeserializeObject<List<PresetData>>(JsonStr);
                 return Presets;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.Write(e);
                 return null;
             }
         }
 
+        /// <summary>
+        /// 初始化预设的Json文件
+        /// </summary>
+        /// <returns></returns>
         public static bool InitPresetJson()
         {
             try
@@ -47,6 +51,43 @@ namespace ENBpresetAssistant.Tools
                 return false;
             }
             return true;
+        }
+
+        /// <summary>
+        /// 解压文件到临时文件夹
+        /// </summary>
+        /// <param name="ZipFile">Zip File Path</param>
+        /// <returns></returns>
+        public static bool UnzipFile(string ZipFile)
+        {
+            try
+            {
+                string TempFolderPath = Directory.GetCurrentDirectory() + "\\Temp";
+
+                FileHelper.CreateEmptyFolder(TempFolderPath);
+
+                ZipHelper.Unzip(ZipFile, TempFolderPath);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MainWindow.Snackbar.MessageQueue.Enqueue("Error: " + e.ToString());
+                return false;
+            }
+        }
+
+
+        public async static void TempUnzip(string ZipFile)
+        {
+            DialogHost.Show(new WaitingCircle());
+
+            await Task.Run(() =>
+            {
+                UnzipFile(ZipFile);
+            });
+
+            DialogHost.CloseDialogCommand.Execute(null, null);
         }
     }
 }
