@@ -40,7 +40,9 @@
                 </DockPanel>
             </StackPanel>
 
-            <TreeView Grid.Row="2" Margin="10" x:Name="DirectotyTree"/>
+            <TreeView Grid.Row="2" Margin="10" x:Name="DirectotyTree" PreviewMouseRightButtonDown="DirectotyTree_PreviewMouseRightButtonDown"/>
+
+            <TextBlock Grid.Row="3" x:Name="PresetAvailability" Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
 
             <Button Style="{DynamicResource MaterialDesignFloatingActionMiniButton}"                     
                     Click="NextBtn_Click"

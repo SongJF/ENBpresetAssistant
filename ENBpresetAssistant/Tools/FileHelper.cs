@@ -16,7 +16,7 @@ namespace ENBpresetAssistant.Tools
         /// <param name="Path">查询的路径</param>
         /// <param name="mode">匹配一个或全匹配</param>
         /// <returns></returns>
-        public static bool FileExistOrNot(List<string> Files,string Path,int mode)
+        public static bool FileExistOrNot(List<string> Files,string Path,int mode=0)
         {
             if (!Directory.Exists(Path)) return false;
             

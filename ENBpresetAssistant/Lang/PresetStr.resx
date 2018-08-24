@@ -138,8 +138,17 @@
   <data name="Intro_PresetName" xml:space="preserve">
     <value>PresetName</value>
   </data>
+  <data name="Intro_Preset_Available" xml:space="preserve">
+    <value>Seems Good</value>
+  </data>
+  <data name="Intro_Preset_Unavailable" xml:space="preserve">
+    <value>Maybe Somthing Wrong</value>
+  </data>
   <data name="Intro_SelectInstalledCore" xml:space="preserve">
     <value>Select Installed Core</value>
+  </data>
+  <data name="Intro_SetRoot" xml:space="preserve">
+    <value>Set As Root</value>
   </data>
   <data name="Intro_UseDefaultCore" xml:space="preserve">
     <value>Contained Core</value>

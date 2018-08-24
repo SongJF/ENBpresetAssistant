@@ -115,6 +115,24 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 Seems Good 的本地化字符串。
+        /// </summary>
+        internal static string Intro_Preset_Available {
+            get {
+                return ResourceManager.GetString("Intro_Preset_Available", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Maybe Somthing Wrong 的本地化字符串。
+        /// </summary>
+        internal static string Intro_Preset_Unavailable {
+            get {
+                return ResourceManager.GetString("Intro_Preset_Unavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 PresetName 的本地化字符串。
         /// </summary>
         internal static string Intro_PresetName {
@@ -129,6 +147,15 @@ namespace ENBpresetAssistant.Lang {
         internal static string Intro_SelectInstalledCore {
             get {
                 return ResourceManager.GetString("Intro_SelectInstalledCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Set As Root 的本地化字符串。
+        /// </summary>
+        internal static string Intro_SetRoot {
+            get {
+                return ResourceManager.GetString("Intro_SetRoot", resourceCulture);
             }
         }
         

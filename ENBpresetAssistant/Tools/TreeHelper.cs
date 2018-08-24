@@ -37,10 +37,10 @@ namespace ENBpresetAssistant.Tools
                 };
 
                 treeViewItemNode.Items.Add(Node);
-                getFiles(item, Node);
 
                 if (Directory.GetDirectories(item) != null) getDirectories(item, Node);    //遍历以搜索整个文件夹
 
+                getFiles(item, Node);
             }
         }
 
