@@ -88,11 +88,83 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 CoreVersion 的本地化字符串。
+        /// </summary>
+        internal static string Intro_CoreVersion {
+            get {
+                return ResourceManager.GetString("Intro_CoreVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 ENBPresetName 的本地化字符串。
+        /// </summary>
+        internal static string Intro_ENBPresetName {
+            get {
+                return ResourceManager.GetString("Intro_ENBPresetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Fill In Default ENB Core  的本地化字符串。
+        /// </summary>
+        internal static string Intro_FillDefaultCore {
+            get {
+                return ResourceManager.GetString("Intro_FillDefaultCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PresetName 的本地化字符串。
+        /// </summary>
+        internal static string Intro_PresetName {
+            get {
+                return ResourceManager.GetString("Intro_PresetName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Select Installed Core 的本地化字符串。
+        /// </summary>
+        internal static string Intro_SelectInstalledCore {
+            get {
+                return ResourceManager.GetString("Intro_SelectInstalledCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Default Core 的本地化字符串。
+        /// </summary>
+        internal static string Intro_UseDefaultCore {
+            get {
+                return ResourceManager.GetString("Intro_UseDefaultCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Installed Core 的本地化字符串。
+        /// </summary>
+        internal static string Intro_UseInstalledCore {
+            get {
+                return ResourceManager.GetString("Intro_UseInstalledCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 No Preset Managed 的本地化字符串。
         /// </summary>
         internal static string No_Preset_Managed {
             get {
                 return ResourceManager.GetString("No_Preset_Managed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Preset Added 的本地化字符串。
+        /// </summary>
+        internal static string Preset_Added {
+            get {
+                return ResourceManager.GetString("Preset_Added", resourceCulture);
             }
         }
         

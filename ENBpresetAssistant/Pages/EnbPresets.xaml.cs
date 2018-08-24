@@ -41,14 +41,23 @@ namespace ENBpresetAssistant.Pages
             RemoveFromView(thisButton.Tag.ToString());
         }
 
-        private void AddBtn_Click(object sender, RoutedEventArgs e)
+        private async void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             string ZipFile = FileHelper.OpenFileDialog("Zip Files (*.zip)|*.zip");
             if (String.IsNullOrEmpty(ZipFile)) return;
-            string ZipNane = ZipFile.Substring(ZipFile.LastIndexOf("\\") + 1, ZipFile.LastIndexOf(".") - (ZipFile.LastIndexOf("\\") + 1));
+            string ZipName = ZipFile.Substring(ZipFile.LastIndexOf("\\") + 1, ZipFile.LastIndexOf(".") - (ZipFile.LastIndexOf("\\") + 1));
 
-            PresetHelper.TempUnzip(ZipFile);
-            
+            await PresetHelper.TempUnzip(ZipFile);
+
+            GlobalVariables_Preset.Init_Variables();
+            GlobalVariables_Preset.ZipName = ZipName;
+
+            Transitions.PresetAdd.AddPresetIntro addPresetIntro = new Transitions.PresetAdd.AddPresetIntro();
+            addPresetIntro.Owner = MainWindow.GlobalMainWindow;
+            addPresetIntro.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            addPresetIntro.ShowDialog();
+
+            if (GlobalVariables_Preset.AddComplete) SB_Message("Preset_Added");
         }
 
         /// <summary>
@@ -63,7 +72,7 @@ namespace ENBpresetAssistant.Pages
                 return false;
             }
 
-            Presets = PresetHelper.GetPresetJson();
+            Presets = PresetHelper.GetPresetFromJson();
             if(Presets==null)
             {
                 ShowExpectionText("No_Preset_Managed");

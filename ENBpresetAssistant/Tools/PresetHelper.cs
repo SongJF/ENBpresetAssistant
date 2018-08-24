@@ -13,13 +13,13 @@ namespace ENBpresetAssistant.Tools
 {
     public class PresetHelper
     {
-        private static string PresetsConfigPath = SettingsData.StoragePath + "\\Presets.Json";
+        private static string PresetsConfigPath = SettingsData.StoragePath + ID.Dir_PresetJson;
 
         /// <summary>
         /// 返回ENB预设信息
         /// </summary>
         /// <returns></returns>
-        public static List<PresetData> GetPresetJson()
+        public static List<PresetData> GetPresetFromJson()
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ENBpresetAssistant.Tools
         {
             try
             {
-                string TempFolderPath = Directory.GetCurrentDirectory() + "\\Temp";
+                string TempFolderPath = Directory.GetCurrentDirectory() + ID.Dir_Temp;
 
                 FileHelper.CreateEmptyFolder(TempFolderPath);
 
@@ -78,7 +78,7 @@ namespace ENBpresetAssistant.Tools
         }
 
 
-        public async static void TempUnzip(string ZipFile)
+        public async static Task TempUnzip(string ZipFile)
         {
             DialogHost.Show(new WaitingCircle());
 
@@ -88,6 +88,7 @@ namespace ENBpresetAssistant.Tools
             });
 
             DialogHost.CloseDialogCommand.Execute(null, null);
+            
         }
     }
 }

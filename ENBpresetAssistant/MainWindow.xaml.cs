@@ -27,11 +27,13 @@ namespace ENBpresetAssistant
     public partial class MainWindow :Window
     {
         public static Snackbar Snackbar;
+        public static Window GlobalMainWindow;
         public MainWindow()
         {
             InitializeComponent();
 
             Snackbar = this.MainSnackbar;
+            GlobalMainWindow = this;
 
             InitSettings();
 

@@ -10,7 +10,7 @@ namespace ENBpresetAssistant.Tools
     class FileHelper
     {
         /// <summary>
-        /// 
+        /// 检测文件是否存在
         /// </summary>
         /// <param name="Files">欲查询的所有文件的文件名</param>
         /// <param name="Path">查询的路径</param>
@@ -118,6 +118,20 @@ namespace ENBpresetAssistant.Tools
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// 获取路径下所有文件夹名
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        public static DirectoryInfo[] GetAllDir(string Path)
+        {
+            if (!Directory.Exists(Path))  Directory.CreateDirectory(Path);
+
+            DirectoryInfo CoreFolder = new DirectoryInfo(Path);
+
+            return CoreFolder.GetDirectories();
         }
     }
 }

@@ -82,6 +82,10 @@
     <Compile Include="Components\WaitingCircle.xaml.cs">
       <DependentUpon>WaitingCircle.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data\AddPresetData.cs" />
+    <Compile Include="Data\CoreData.cs" />
+    <Compile Include="Data\GlobalVariables_Core.cs" />
+    <Compile Include="Data\GlobalVariables_Preset.cs" />
     <Compile Include="Data\ID.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -103,6 +107,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>PresetStr.resx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\AddPresetIntro.xaml.cs">
+      <DependentUpon>AddPresetIntro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml.cs">
+      <DependentUpon>Slider1_Intro.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\TransitionHome.xaml.cs">
+      <DependentUpon>TransitionHome.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\CoreHelper.cs" />
     <Compile Include="Tools\ZipHelper.cs" />
     <Page Include="Components\WaitingCircle.xaml">
       <SubType>Designer</SubType>
@@ -138,6 +152,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Transitions\PresetAdd\AddPresetIntro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Transitions\PresetAdd\TransitionHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -216,7 +242,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Transitions\CoreAdd\" />
-    <Folder Include="Pages\Transitions\PresetAdd\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

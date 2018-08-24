@@ -70,6 +70,51 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
+        ///   查找类似 \\Storage\\Cores 的本地化字符串。
+        /// </summary>
+        public static string Dir_Core {
+            get {
+                return ResourceManager.GetString("Dir_Core", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 \\StorageConfig\\Cores.Json 的本地化字符串。
+        /// </summary>
+        public static string Dir_CoreJson {
+            get {
+                return ResourceManager.GetString("Dir_CoreJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 \\Storage\\Presets 的本地化字符串。
+        /// </summary>
+        public static string Dir_Preset {
+            get {
+                return ResourceManager.GetString("Dir_Preset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 \\StorageConfig\\Presets.Json 的本地化字符串。
+        /// </summary>
+        public static string Dir_PresetJson {
+            get {
+                return ResourceManager.GetString("Dir_PresetJson", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 \\Temp 的本地化字符串。
+        /// </summary>
+        public static string Dir_Temp {
+            get {
+                return ResourceManager.GetString("Dir_Temp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 en-US 的本地化字符串。
         /// </summary>
         public static string English {

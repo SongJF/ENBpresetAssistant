@@ -126,8 +126,32 @@
   <data name="Falied_To_Get_Presets_Info" xml:space="preserve">
     <value>Falied To Get Presets Info</value>
   </data>
+  <data name="Intro_CoreVersion" xml:space="preserve">
+    <value>CoreVersion</value>
+  </data>
+  <data name="Intro_ENBPresetName" xml:space="preserve">
+    <value>ENBPresetName</value>
+  </data>
+  <data name="Intro_FillDefaultCore" xml:space="preserve">
+    <value>Fill In Default ENB Core </value>
+  </data>
+  <data name="Intro_PresetName" xml:space="preserve">
+    <value>PresetName</value>
+  </data>
+  <data name="Intro_SelectInstalledCore" xml:space="preserve">
+    <value>Select Installed Core</value>
+  </data>
+  <data name="Intro_UseDefaultCore" xml:space="preserve">
+    <value>Default Core</value>
+  </data>
+  <data name="Intro_UseInstalledCore" xml:space="preserve">
+    <value>Installed Core</value>
+  </data>
   <data name="No_Preset_Managed" xml:space="preserve">
     <value>No Preset Managed</value>
+  </data>
+  <data name="Preset_Added" xml:space="preserve">
+    <value>Preset Added</value>
   </data>
   <data name="State_Available" xml:space="preserve">
     <value>Available</value>
