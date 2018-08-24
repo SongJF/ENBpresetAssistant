@@ -133,7 +133,7 @@
     <value>ENBPresetName</value>
   </data>
   <data name="Intro_FillDefaultCore" xml:space="preserve">
-    <value>Fill In Default ENB Core </value>
+    <value>Fill In Contained ENB Core </value>
   </data>
   <data name="Intro_PresetName" xml:space="preserve">
     <value>PresetName</value>
@@ -142,7 +142,7 @@
     <value>Select Installed Core</value>
   </data>
   <data name="Intro_UseDefaultCore" xml:space="preserve">
-    <value>Default Core</value>
+    <value>Contained Core</value>
   </data>
   <data name="Intro_UseInstalledCore" xml:space="preserve">
     <value>Installed Core</value>

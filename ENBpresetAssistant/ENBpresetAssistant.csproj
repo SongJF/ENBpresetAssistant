@@ -113,10 +113,14 @@
     <Compile Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml.cs">
       <DependentUpon>Slider1_Intro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\Slider2_Intro.xaml.cs">
+      <DependentUpon>Slider2_Intro.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Transitions\PresetAdd\TransitionHome.xaml.cs">
       <DependentUpon>TransitionHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\CoreHelper.cs" />
+    <Compile Include="Tools\TreeHelper.cs" />
     <Compile Include="Tools\ZipHelper.cs" />
     <Page Include="Components\WaitingCircle.xaml">
       <SubType>Designer</SubType>
@@ -160,6 +164,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\Transitions\PresetAdd\Slider2_Intro.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

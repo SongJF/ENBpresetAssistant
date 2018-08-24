@@ -13,8 +13,10 @@
             <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
                 <local:Slider1_Intro/>
             </materialDesign:TransitionerSlide>
-            
-            
+
+            <materialDesign:TransitionerSlide OpeningEffect="{materialDesign:TransitionEffect FadeIn}">
+                <local:Slider2_Intro/>
+            </materialDesign:TransitionerSlide>
         </materialDesign:Transitioner>
     </Grid>
 </UserControl>

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,7 @@ using System.Windows.Shapes;
 
 
 using ENBpresetAssistant.Tools;
+using MaterialDesignThemes.Wpf.Transitions;
 
 namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
 {
@@ -29,7 +32,14 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
 
             DataContext = new Data.GlobalVariables_Preset();
 
+            DirectotyTree_Load();
             Init_ComboBox();
+        }
+
+        private void NextBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            Transitioner.MoveNextCommand.Execute(null, null);
         }
 
         private void Init_ComboBox()
@@ -46,6 +56,14 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
                     CoreSelection.Items.Add(comboBoxItem);
                 }
             }
+        }
+
+        private void DirectotyTree_Load()
+        {
+            string Path = Directory.GetCurrentDirectory() + Data.ID.Dir_Temp;
+
+            DirectotyTree.Items.Clear();
+            DirectotyTree.Items.Add(TreeHelper.GetTreeViewItem(Path,Data.GlobalVariables_Preset.ZipName));
         }
     }
 }

@@ -106,7 +106,7 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
-        ///   查找类似 Fill In Default ENB Core  的本地化字符串。
+        ///   查找类似 Fill In Contained ENB Core  的本地化字符串。
         /// </summary>
         internal static string Intro_FillDefaultCore {
             get {
@@ -133,7 +133,7 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
-        ///   查找类似 Default Core 的本地化字符串。
+        ///   查找类似 Contained Core 的本地化字符串。
         /// </summary>
         internal static string Intro_UseDefaultCore {
             get {
