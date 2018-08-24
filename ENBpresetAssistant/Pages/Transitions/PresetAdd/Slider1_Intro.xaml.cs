@@ -34,13 +34,17 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
 
         private void Init_ComboBox()
         {
-            foreach(var item in CoreHelper.GetCoresFromJson())
+            var Cores = CoreHelper.GetCoresFromJson();
+            if(Cores!=null)
             {
-                ComboBoxItem comboBoxItem = new ComboBoxItem()
+                foreach (var item in Cores)
                 {
-                    Content = item.CoreVersion
-                };
-                CoreSelection.Items.Add(comboBoxItem);
+                    ComboBoxItem comboBoxItem = new ComboBoxItem()
+                    {
+                        Content = item.CoreVersion
+                    };
+                    CoreSelection.Items.Add(comboBoxItem);
+                }
             }
         }
     }

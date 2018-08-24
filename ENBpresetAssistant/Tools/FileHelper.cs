@@ -38,23 +38,6 @@ namespace ENBpresetAssistant.Tools
             return true;
         }
 
-        public static bool CreateEmptyFolder(string Path)
-        {
-            try
-            {
-                if (PathAvailableOrNot(Path)) Directory.Delete(Path,true);
-
-                CreateFolder(Path);
-            }
-            catch(Exception e)
-            {
-                Console.Write(e);
-                return false;
-            }
-
-            return true;
-        }
-
         /// <summary>
         /// 判断路径存在与否
         /// </summary>
@@ -84,6 +67,28 @@ namespace ENBpresetAssistant.Tools
                 Console.Write(e);
                 return false;
             }
+        }
+
+        /// <summary>
+        /// 创建空文件夹
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <returns></returns>
+        public static bool CreateEmptyFolder(string Path)
+        {
+            try
+            {
+                if (PathAvailableOrNot(Path)) Directory.Delete(Path, true);
+
+                CreateFolder(Path);
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+                return false;
+            }
+
+            return true;
         }
 
         /// <summary>
@@ -132,6 +137,36 @@ namespace ENBpresetAssistant.Tools
             DirectoryInfo CoreFolder = new DirectoryInfo(Path);
 
             return CoreFolder.GetDirectories();
+        }
+
+        public static void MV_Folder(string Source,string Target)
+        {
+            if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
+
+            if(!PathAvailableOrNot(Target))
+            {
+                if(!CreateFolder(Target)) throw new Exception("Move Folder Failed: Target Directory Not Available");
+            }
+
+            List<string> Files = new List<string>(Directory.GetFiles(Source));
+            Files.ForEach(c =>
+            {
+                string TargetFile = Path.Combine(Target, Path.GetFileName(c));
+                //覆盖模式
+                if (File.Exists(TargetFile)) File.Delete(TargetFile);
+
+                File.Move(c, TargetFile);
+            });
+
+            List<string> Folders = new List<string>(Directory.GetDirectories(Source));
+
+            Folders.ForEach(c =>
+            {
+                string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
+
+                //采用递归的方法实现
+                MV_Folder(c, TargetFolder);
+            });
         }
     }
 }

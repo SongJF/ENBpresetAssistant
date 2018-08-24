@@ -17,17 +17,20 @@ namespace ENBpresetAssistant.Tools
         /// <summary>
         /// 从本地读取Json文件
         /// </summary>
-        /// <param name="SettingsPath">Json文件路径</param>
+        /// <param name="Path">Json文件路径</param>
         /// <returns></returns>
-        public static string GetJsonFromFile(string SettingsPath)
+        public static string GetJsonFromFile(string Path)
         {
-            if (!File.Exists(SettingsPath))
+            if (!File.Exists(Path))
             {
-                var thisFile = File.Create(SettingsPath);
+                string FolderPath = Path.Substring(0,Path.LastIndexOf("\\") + 1);
+                if (!FileHelper.PathAvailableOrNot(FolderPath)) FileHelper.CreateFolder(FolderPath);
+                var thisFile = File.Create(Path);
                 thisFile.Close();
+                File.WriteAllText(Path, "{}");
             }
 
-            string JsonString = File.ReadAllText(SettingsPath);
+            string JsonString = File.ReadAllText(Path);
 
             return JsonString;
         }

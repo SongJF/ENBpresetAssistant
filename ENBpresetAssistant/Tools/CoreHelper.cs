@@ -14,6 +14,10 @@ namespace ENBpresetAssistant.Tools
     {
         private static string CoresConfigPath = SettingsData.StoragePath + ID.Dir_CoreJson;
 
+        /// <summary>
+        /// 读取所有Core信息
+        /// </summary>
+        /// <returns></returns>
         public static List<CoreData> GetCoresFromJson()
         {
             try

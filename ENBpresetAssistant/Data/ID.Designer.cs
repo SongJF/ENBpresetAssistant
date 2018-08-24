@@ -70,7 +70,7 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 \\Storage\\Cores 的本地化字符串。
+        ///   查找类似 \Storage\Cores 的本地化字符串。
         /// </summary>
         public static string Dir_Core {
             get {
@@ -79,7 +79,7 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 \\StorageConfig\\Cores.Json 的本地化字符串。
+        ///   查找类似 \Storage\Config\Cores.Json 的本地化字符串。
         /// </summary>
         public static string Dir_CoreJson {
             get {
@@ -88,7 +88,7 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 \\Storage\\Presets 的本地化字符串。
+        ///   查找类似 \Storage\Presets 的本地化字符串。
         /// </summary>
         public static string Dir_Preset {
             get {
@@ -97,7 +97,7 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 \\StorageConfig\\Presets.Json 的本地化字符串。
+        ///   查找类似 \Storage\Config\Presets.Json 的本地化字符串。
         /// </summary>
         public static string Dir_PresetJson {
             get {
@@ -106,7 +106,16 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 \\Temp 的本地化字符串。
+        ///   查找类似 \Storage 的本地化字符串。
+        /// </summary>
+        public static string Dir_Storage {
+            get {
+                return ResourceManager.GetString("Dir_Storage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 \Temp 的本地化字符串。
         /// </summary>
         public static string Dir_Temp {
             get {

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ENBpresetAssistant.Data
 {
-    public class GlobalVariables_Core
+    class GlobalVariables_Core
     {
+        /*
         private static List<CoreData> _Cores;
         public static List<CoreData> Cores
         {
@@ -15,5 +16,6 @@ namespace ENBpresetAssistant.Data
 
             set { _Cores = value; }
         }
+        */
     }
 }

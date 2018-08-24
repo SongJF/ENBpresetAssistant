@@ -109,6 +109,16 @@ namespace ENBpresetAssistant.Pages
                 }
                 MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Folder_Created", "SettingsStr"));
             }
+            try
+            {
+                FileHelper.MV_Folder(Data.SettingsData.StoragePath + Data.ID.Dir_Storage, Path + Data.ID.Dir_Storage);
+            }
+            catch
+            {
+                StoragePath.Text = Data.SettingsData.StoragePath;
+                Failed();
+                return;
+            }
             if (!SettingsHelper.ModifySettings("StoragePath", Path)) return;
 
             StoragePath.Text = Path;
@@ -166,6 +176,17 @@ namespace ENBpresetAssistant.Pages
                     return;
                 }
                 MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Folder_Created", "SettingsStr"));
+            }
+
+            try
+            {
+                FileHelper.MV_Folder(Data.SettingsData.StoragePath + Data.ID.Dir_Storage, Path + Data.ID.Dir_Storage);
+            }
+            catch
+            {
+                StoragePath.Text = Data.SettingsData.StoragePath;
+                Failed();
+                return;
             }
 
             if (!SettingsHelper.ModifySettings(thisTexBox.Name, thisTexBox.Text))

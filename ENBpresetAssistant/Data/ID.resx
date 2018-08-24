@@ -160,18 +160,21 @@
     <value>ExpText</value>
   </data>
   <data name="Dir_Preset" xml:space="preserve">
-    <value>\\Storage\\Presets</value>
+    <value>\Storage\Presets</value>
   </data>
   <data name="Dir_Core" xml:space="preserve">
-    <value>\\Storage\\Cores</value>
+    <value>\Storage\Cores</value>
   </data>
   <data name="Dir_CoreJson" xml:space="preserve">
-    <value>\\StorageConfig\\Cores.Json</value>
+    <value>\Storage\Config\Cores.Json</value>
   </data>
   <data name="Dir_PresetJson" xml:space="preserve">
-    <value>\\StorageConfig\\Presets.Json</value>
+    <value>\Storage\Config\Presets.Json</value>
   </data>
   <data name="Dir_Temp" xml:space="preserve">
-    <value>\\Temp</value>
+    <value>\Temp</value>
+  </data>
+  <data name="Dir_Storage" xml:space="preserve">
+    <value>\Storage</value>
   </data>
 </root>
