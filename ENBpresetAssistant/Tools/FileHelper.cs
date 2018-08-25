@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ENBpresetAssistant.Components;
+using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -139,7 +141,18 @@ namespace ENBpresetAssistant.Tools
             return CoreFolder.GetDirectories();
         }
 
-        public static void MV_Folder(string Source,string Target)
+        public static async void MV_Folder(string Source, string Target)
+        {
+            DialogHost.Show(new WaitingCircle());
+
+            await Task.Run(() =>
+            {
+                MV_Now(Source,Target);
+                DialogHost.CloseDialogCommand.Execute(null, null);
+            });
+        }
+
+        private static void MV_Now(string Source,string Target)
         {
             if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
 
@@ -165,7 +178,7 @@ namespace ENBpresetAssistant.Tools
                 string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
 
                 //采用递归的方法实现
-                MV_Folder(c, TargetFolder);
+                MV_Now(c, TargetFolder);
             });
         }
     }

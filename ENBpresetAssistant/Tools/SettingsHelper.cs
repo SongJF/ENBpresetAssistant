@@ -23,7 +23,7 @@ namespace ENBpresetAssistant.Tools
             string SettingsPath = Directory.GetCurrentDirectory() + "\\Setings.Json";
             String JsonString = JsonHelper.GetJsonFromFile(SettingsPath);
 
-            if(JsonString.Length==0)
+            if(JsonString.Length<=2)
             {
                 InitGlobal();
                 return true;
@@ -108,7 +108,7 @@ namespace ENBpresetAssistant.Tools
                 SetGlobal(ID.ST_isDark, "false");
                 SetGlobal(ID.ST_ThemeColor, "brown");
                 SetGlobal(ID.ST_Language, ID.English);
-                SetGlobal(ID.ST_StoragePath, Directory.GetCurrentDirectory() + "\\Storage");
+                SetGlobal(ID.ST_StoragePath, Directory.GetCurrentDirectory());
                 JsonHelper.JsonSave(Directory.GetCurrentDirectory() + "\\Setings.Json",TransGlobalSettingsToJObject());
             }
             catch

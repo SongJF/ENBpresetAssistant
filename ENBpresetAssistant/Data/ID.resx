@@ -154,7 +154,7 @@
     <value>Skyrim.exe</value>
   </data>
   <data name="Exe_SkyrimSE" xml:space="preserve">
-    <value>Skyrim.exe</value>
+    <value>SkyrimSE.exe</value>
   </data>
   <data name="Preset_ExpText" xml:space="preserve">
     <value>ExpText</value>

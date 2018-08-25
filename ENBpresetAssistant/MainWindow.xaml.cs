@@ -102,8 +102,6 @@ namespace ENBpresetAssistant
             if (!SettingsHelper.ReadSettings())
             {
                 MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Get_Settings", Data.ID.StrRes_Main));
-                Data.SettingsData.isDark = false;
-                Data.SettingsData.ThemeColor = "brown";
             }
             if (!ThemeHelper.ApplyTheme()) MainSnackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Apply_Theme", Data.ID.StrRes_Main));
 

@@ -142,7 +142,7 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
-        ///   查找类似 Skyrim.exe 的本地化字符串。
+        ///   查找类似 SkyrimSE.exe 的本地化字符串。
         /// </summary>
         public static string Exe_SkyrimSE {
             get {

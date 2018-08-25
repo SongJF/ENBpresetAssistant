@@ -92,7 +92,12 @@
       <DependentUpon>ID.resx</DependentUpon>
     </Compile>
     <Compile Include="Data\PresetData.cs" />
-    <Compile Include="Pages\Transitions\PresetAdd\NotEmptyValidationRule.cs" />
+    <Compile Include="Pages\InstallWin\PresetAdd\NotEmptyValidationRule.cs" />
+    <Compile Include="Pages\InstallWin\PresetAdd\NotRepeatValidationRule.cs" />
+    <Compile Include="Pages\InstallWin\PresetAdd\PresetInstall.xaml.cs">
+      <DependentUpon>PresetInstall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InstallWin\PresetAdd\PresetInstall_ViewModel.cs" />
     <Compile Include="Lang\CommonStr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,20 +117,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PresetStr.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Transitions\PresetAdd\AddPresetIntro.xaml.cs">
-      <DependentUpon>AddPresetIntro.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Transitions\PresetAdd\NotRepeatValidationRule.cs" />
-    <Compile Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml.cs">
-      <DependentUpon>Slider1_Intro.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Transitions\PresetAdd\Slider1_ViewModel.cs" />
-    <Compile Include="Pages\Transitions\PresetAdd\Slider2_Intro.xaml.cs">
-      <DependentUpon>Slider2_Intro.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Transitions\PresetAdd\TransitionHome.xaml.cs">
-      <DependentUpon>TransitionHome.xaml</DependentUpon>
     </Compile>
     <Compile Include="Tools\CoreHelper.cs" />
     <Compile Include="Tools\TreeHelper.cs" />
@@ -163,23 +154,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\InstallWin\PresetAdd\PresetInstall.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Settings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Transitions\PresetAdd\AddPresetIntro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Transitions\PresetAdd\Slider2_Intro.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\Transitions\PresetAdd\TransitionHome.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -261,8 +240,6 @@
   <ItemGroup>
     <Resource Include="E.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Pages\Transitions\CoreAdd\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

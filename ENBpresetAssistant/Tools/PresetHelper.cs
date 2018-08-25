@@ -58,7 +58,7 @@ namespace ENBpresetAssistant.Tools
         /// </summary>
         /// <param name="ZipFile">Zip File Path</param>
         /// <returns></returns>
-        public static bool UnzipFile(string ZipFile)
+        private static bool UnzipFile(string ZipFile)
         {
             try
             {
@@ -77,7 +77,11 @@ namespace ENBpresetAssistant.Tools
             }
         }
 
-
+        /// <summary>
+        /// 解压压缩包
+        /// </summary>
+        /// <param name="ZipFile"></param>
+        /// <returns></returns>
         public async static Task TempUnzip(string ZipFile)
         {
             DialogHost.Show(new WaitingCircle());
@@ -89,6 +93,21 @@ namespace ENBpresetAssistant.Tools
 
             DialogHost.CloseDialogCommand.Execute(null, null);
             
+        }
+
+
+        public static void AddPresetJson(PresetData preset)
+        {
+            var CurrentPresets = GetPresetFromJson();
+            if (CurrentPresets == null) CurrentPresets = new List<PresetData>();
+            CurrentPresets.Add(preset);
+            SavePrests(CurrentPresets);
+        }
+
+        public static void SavePrests(List<PresetData> presets)
+        {
+            var JsonStr = JsonConvert.SerializeObject(presets);
+            JsonHelper.JsonSave(PresetsConfigPath, JsonStr);
         }
     }
 }

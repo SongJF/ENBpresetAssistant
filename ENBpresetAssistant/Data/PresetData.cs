@@ -10,7 +10,6 @@ namespace ENBpresetAssistant.Data
     {
         public string PresetName { get; set; }
         public string Core { get; set; }
-        public string Path { get; set; }
         public DateTime InstallTime { get; set; }
         public bool isRunning { get; set; }
     }

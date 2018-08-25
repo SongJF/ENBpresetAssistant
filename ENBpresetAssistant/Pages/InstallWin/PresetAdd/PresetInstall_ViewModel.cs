@@ -6,11 +6,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
+namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
 {
-    public class Slider1_ViewModel : INotifyPropertyChanged
+    public class PresetInstall_ViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private Action<PropertyChangedEventArgs> RaisePropertyChanged()

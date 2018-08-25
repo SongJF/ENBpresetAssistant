@@ -52,12 +52,28 @@ namespace ENBpresetAssistant.Pages
             GlobalVariables_Preset.Init_Variables();
             GlobalVariables_Preset.ZipName = ZipName;
 
-            Transitions.PresetAdd.AddPresetIntro addPresetIntro = new Transitions.PresetAdd.AddPresetIntro();
+            var addPresetIntro = new InstallWin.PresetAdd.PresetInstall();
             addPresetIntro.Owner = MainWindow.GlobalMainWindow;
             addPresetIntro.WindowStartupLocation = WindowStartupLocation.CenterOwner;
             addPresetIntro.ShowDialog();
 
-            if (GlobalVariables_Preset.AddComplete) SB_Message("Preset_Added");
+            if (GlobalVariables_Preset.AddComplete)
+            {
+                PresetData presetData = new PresetData()
+                {
+                    PresetName = GlobalVariables_Preset.PresetName,
+                    Core = GlobalVariables_Preset.CoreVersion,
+                    InstallTime = DateTime.UtcNow,
+                    isRunning = false
+                };
+                PresetHelper.AddPresetJson(presetData);
+
+                var newFlipper = CreateFlipper(presetData);
+                RemoveFromView(ID.Preset_ExpText);
+                AddToView(newFlipper, newFlipper.Tag.ToString());
+
+                SB_Message("Preset_Added");
+            }
         }
 
         /// <summary>
@@ -75,14 +91,13 @@ namespace ENBpresetAssistant.Pages
             Presets = PresetHelper.GetPresetFromJson();
             if(Presets==null)
             {
-                ShowExpectionText("No_Preset_Managed");
-                SB_Message("Falied_To_Get_Presets_Info");
+                SB_Message("No_Preset_Managed");
                 PresetHelper.InitPresetJson();
                 return false;
             } 
             if (Presets.Count == 0)
             {
-                ShowExpectionText("No_Preset_Managed");
+                SB_Message("No_Preset_Managed");
                 return false;
             }
 
@@ -174,13 +189,17 @@ namespace ENBpresetAssistant.Pages
 
         private Flipper CreateFlipper(PresetData preset)
         {
+            string UUID = Guid.NewGuid().ToString("N");
+            while(!Char.IsLetter(UUID[0]))
+            {
+                UUID = UUID.Substring(1);
+            }
             Flipper flipper = new Flipper()
             {
                 Style = (Style)this.FindResource("MaterialDesignCardFlipper"),
                 Margin = new Thickness(30, 20, 30, 20),
-                FrontContent = CreateFrontContent(preset),
-                BackContent = CreateBackContent(preset),
-                Tag = preset.PresetName,
+                FrontContent = CreateFrontContent(preset,UUID),
+                Tag = UUID,
                 Width=180,
                 HorizontalContentAlignment=HorizontalAlignment.Center,
                 VerticalContentAlignment=VerticalAlignment.Top
@@ -194,7 +213,7 @@ namespace ENBpresetAssistant.Pages
         /// </summary>
         /// <param name="preset"></param>
         /// <returns></returns>
-        private UIElement CreateFrontContent(PresetData preset)
+        private UIElement CreateFrontContent(PresetData preset,string UUID)
         {
             ColorZone TitlecolorZone = new ColorZone() { Mode = ColorZoneMode.PrimaryLight, Height = 30 };
             TextBlock StateText = new TextBlock() { Text = LocalizedHelper.GetLocalizedString("State_Available", ID.StrRes_Preset), Foreground = (Brush)this.FindResource("AccentColorBrush3"), Margin = new Thickness(10) };
@@ -205,9 +224,9 @@ namespace ENBpresetAssistant.Pages
 
             TextBlock InstallTime = new TextBlock() { Text = preset.InstallTime.Date.ToString(), Margin = new Thickness(10, 10, 10, 10), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
 
-            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=preset.PresetName};
+            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=UUID};
 
-            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=preset.PresetName};
+            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=UUID};
 
             if (preset.isRunning)
             {
@@ -261,16 +280,16 @@ namespace ENBpresetAssistant.Pages
         /// </summary>
         /// <param name="preset"></param>
         /// <returns></returns>
-        private UIElement CreateBackContent(PresetData preset)
+        private UIElement CreateBackContent(PresetData preset,string UUID)
         {
             ColorZone TitlecolorZone = new ColorZone() { Mode = ColorZoneMode.PrimaryLight, Height = 30 };
 
             TreeView FileTree = new TreeView() { Height=200 ,Margin=new Thickness(10)};
 
-            Button DeleteBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Delete }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=preset.PresetName};
+            Button DeleteBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Delete }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag= UUID};
             DeleteBtn.Click += new RoutedEventHandler(DeleteBtn_Click);
 
-            Button ReturnBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Return", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=preset.PresetName};
+            Button ReturnBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Return", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag= UUID};
 
             if (preset.isRunning)
             {
