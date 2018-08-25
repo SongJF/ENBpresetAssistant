@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace ENBpresetAssistant.Tools
 {
@@ -13,10 +14,41 @@ namespace ENBpresetAssistant.Tools
     {
         public static TreeViewItem GetTreeViewItem(string Path,string rootName)
         {
-            TreeViewItem Nodes = new TreeViewItem() { Header = CreateTreeViewFolder(rootName) };
+            TreeViewItem Nodes = new TreeViewItem() { Header = CreateTreeViewFolder(rootName) ,IsExpanded=true};
             getDirectories(Path, Nodes);
             getFiles(Path, Nodes);
             return Nodes;
+        }
+
+        /// <summary>
+        /// 找到目标组件
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        public static DependencyObject VisualUpwardSeach<T>(DependencyObject source)
+        {
+            while (source != null && source.GetType() != typeof(T))
+            {
+                source = VisualTreeHelper.GetParent(source);
+            }
+            return source;
+        }
+
+        /// <summary>
+        /// 生成TreeView文件路径
+        /// </summary>
+        /// <param name="treeViewItem"></param>
+        /// <returns></returns>
+        public static string GetTreeRouter(TreeViewItem treeViewItem)
+        {
+            string FullRouter = "";
+            while (treeViewItem.Parent.GetType().Name == "TreeViewItem")
+            {
+                FullRouter = "\\" + treeViewItem.Header.ToString() + FullRouter;
+                treeViewItem = (TreeViewItem)treeViewItem.Parent;
+            }
+            return FullRouter;
         }
 
         private static object CreateTreeViewFolder(string AValue)

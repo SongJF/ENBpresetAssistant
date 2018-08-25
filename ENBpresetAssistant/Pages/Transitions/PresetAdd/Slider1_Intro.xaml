@@ -25,14 +25,30 @@
             <StackPanel>
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="10,5" Text="{lex:Loc Intro_PresetName}" VerticalAlignment="Top"/>
 
-                <TextBox materialDesign:HintAssist.Hint="{lex:Loc Intro_ENBPresetName}" Margin="20,0" Text="{Binding ZipName, Mode=OneTime}" HorizontalContentAlignment="Center"/>
+                <TextBox materialDesign:HintAssist.Hint="{lex:Loc Intro_ENBPresetName}" Margin="20,0"  HorizontalContentAlignment="Center" x:Name="PresetNameText">
+                    <TextBox.Text>
+                        <Binding Path="PresetName" UpdateSourceTrigger="PropertyChanged" >
+                            <Binding.ValidationRules>
+                                <local:NotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="1">
                 <TextBlock Style="{StaticResource MaterialDesignSubheadingTextBlock}" Margin="10,0,10,10" Text="{lex:Loc Intro_CoreVersion}" VerticalAlignment="Top"/>
                 <DockPanel Margin="10,5">
                     <RadioButton Content="{lex:Loc Intro_UseDefaultCore}" IsChecked="True" GroupName="Core" x:Name="DefaultCoreRadBtn"></RadioButton>
-                    <TextBox materialDesign:HintAssist.Hint="{lex:Loc Intro_FillDefaultCore}"  Margin="10,-5,10,0" IsEnabled="{Binding ElementName=DefaultCoreRadBtn, Path=IsChecked}"></TextBox>
+                    <TextBox materialDesign:HintAssist.Hint="{lex:Loc Intro_FillDefaultCore}"  Margin="10,-5,10,0" IsEnabled="{Binding ElementName=DefaultCoreRadBtn, Path=IsChecked}" x:Name="DefaultCoreText">
+                        <TextBox.Text>
+                            <Binding Path="ContainedCoreVersion" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <local:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
                 </DockPanel>
                 <DockPanel Margin="10,5">
                     <RadioButton Content="{lex:Loc Intro_UseInstalledCore}" IsChecked="False" GroupName="Core" x:Name="InstalledCoreRadBtn"></RadioButton>

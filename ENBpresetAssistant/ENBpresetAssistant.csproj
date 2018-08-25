@@ -92,6 +92,12 @@
       <DependentUpon>ID.resx</DependentUpon>
     </Compile>
     <Compile Include="Data\PresetData.cs" />
+    <Compile Include="Pages\Transitions\PresetAdd\NotEmptyValidationRule.cs" />
+    <Compile Include="Lang\CommonStr.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CommonStr.resx</DependentUpon>
+    </Compile>
     <Compile Include="Lang\CoreStr.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -110,9 +116,11 @@
     <Compile Include="Pages\Transitions\PresetAdd\AddPresetIntro.xaml.cs">
       <DependentUpon>AddPresetIntro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\NotRepeatValidationRule.cs" />
     <Compile Include="Pages\Transitions\PresetAdd\Slider1_Intro.xaml.cs">
       <DependentUpon>Slider1_Intro.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Transitions\PresetAdd\Slider1_ViewModel.cs" />
     <Compile Include="Pages\Transitions\PresetAdd\Slider2_Intro.xaml.cs">
       <DependentUpon>Slider2_Intro.xaml</DependentUpon>
     </Compile>
@@ -210,6 +218,11 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ID.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lang\CommonStr.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CommonStr.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang\CommonStr.zh-CN.resx" />
     <EmbeddedResource Include="Lang\CoreStr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CoreStr.Designer.cs</LastGenOutput>

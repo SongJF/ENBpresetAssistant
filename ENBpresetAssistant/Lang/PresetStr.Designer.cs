@@ -106,7 +106,7 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
-        ///   查找类似 Fill In Contained ENB Core  的本地化字符串。
+        ///   查找类似 Fill In Core Version 的本地化字符串。
         /// </summary>
         internal static string Intro_FillDefaultCore {
             get {
@@ -174,6 +174,15 @@ namespace ENBpresetAssistant.Lang {
         internal static string Intro_UseInstalledCore {
             get {
                 return ResourceManager.GetString("Intro_UseInstalledCore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Field Is Required 的本地化字符串。
+        /// </summary>
+        internal static string Intro_Validation_Required {
+            get {
+                return ResourceManager.GetString("Intro_Validation_Required", resourceCulture);
             }
         }
         

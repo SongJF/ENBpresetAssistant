@@ -10,6 +10,8 @@ namespace ENBpresetAssistant.Data
     {
         public static string ZipName { get; set; }
 
+        public static string PresetName { get; set; }
+
         public static string CoreVersion { get; set; }
 
         public static string RouterInTemp { get; set; }

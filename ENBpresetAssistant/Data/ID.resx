@@ -177,4 +177,7 @@
   <data name="Dir_Storage" xml:space="preserve">
     <value>\Storage</value>
   </data>
+  <data name="StrRes_Common" xml:space="preserve">
+    <value>CommonStr</value>
+  </data>
 </root>

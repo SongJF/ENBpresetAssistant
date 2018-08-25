@@ -30,7 +30,7 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
         {
             InitializeComponent();
 
-            DataContext = new Data.GlobalVariables_Preset();
+            DataContext = new Slider1_ViewModel() {PresetName= Data.GlobalVariables_Preset.ZipName };
 
             DirectotyTree_Load(Directory.GetCurrentDirectory() + Data.ID.Dir_Temp , Data.GlobalVariables_Preset.ZipName);
             Init_ComboBox();
@@ -38,6 +38,19 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
 
         private void NextBtn_Click(object sender, RoutedEventArgs e)
         {
+            if (Validation.GetHasError(PresetNameText)) return;
+            if (DefaultCoreRadBtn.IsChecked==true)
+            {
+                if (Validation.GetHasError(DefaultCoreText)) return;
+            }
+            if(InstalledCoreRadBtn.IsChecked==true)
+            {
+                if (CoreSelection.SelectedItem == null) return;
+                DefaultCoreText.Text = CoreSelection.SelectedItem.ToString();
+            }
+
+            Data.GlobalVariables_Preset.CoreVersion = DefaultCoreText.Text;
+            Data.GlobalVariables_Preset.PresetName = PresetNameText.Text;
 
             Transitioner.MoveNextCommand.Execute(null, null);
         }
@@ -101,14 +114,14 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
         /// <param name="e"></param>
         private void DirectotyTree_PreviewMouseRightButtonDown(object sender, MouseButtonEventArgs e)
         {
-            var treeViewItem = VisualUpwardSeach < TreeViewItem >((DependencyObject)e.OriginalSource) as TreeViewItem;
+            var treeViewItem =TreeHelper.VisualUpwardSeach < TreeViewItem >((DependencyObject)e.OriginalSource) as TreeViewItem;
             if (treeViewItem != null)
             {
-                string FullTreeRouter = GetTreeRouter(treeViewItem);
+                string FullTreeRouter =TreeHelper.GetTreeRouter(treeViewItem);
 
                 if (String.IsNullOrEmpty(FullTreeRouter)) return;
 
-                treeViewItem.ContextMenu = CreateMenu(FullTreeRouter);
+                treeViewItem.ContextMenu = CreateRootChangeMenu(FullTreeRouter);
 
                 treeViewItem.Focus();
 
@@ -118,26 +131,11 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
         }
 
         /// <summary>
-        /// 找到右键的目标组件
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="source"></param>
-        /// <returns></returns>
-        private DependencyObject VisualUpwardSeach<T>(DependencyObject source)
-        {
-            while (source != null && source.GetType() != typeof(T))
-            {
-                source = VisualTreeHelper.GetParent(source);
-            }
-            return source;
-        }
-
-        /// <summary>
         /// 创建右键菜单
         /// </summary>
         /// <param name="Router"></param>
         /// <returns></returns>
-        private ContextMenu CreateMenu(string Router)
+        private ContextMenu CreateRootChangeMenu(string Router)
         {
             ContextMenu menu = new ContextMenu();
 
@@ -170,22 +168,6 @@ namespace ENBpresetAssistant.Pages.Transitions.PresetAdd
                 return;
             }
             Data.GlobalVariables_Preset.RouterInTemp += "\\" + thisMenuItem.Tag;
-        }
-
-        /// <summary>
-        /// 生成TreeView文件路径
-        /// </summary>
-        /// <param name="treeViewItem"></param>
-        /// <returns></returns>
-        private string GetTreeRouter(TreeViewItem treeViewItem)
-        {
-            string FullRouter = "";
-            while(treeViewItem.Parent.GetType().Name == "TreeViewItem")
-            {
-                FullRouter = "\\" + treeViewItem.Header.ToString() + FullRouter;
-                treeViewItem = (TreeViewItem)treeViewItem.Parent;
-            }
-            return FullRouter;
         }
     }
 }

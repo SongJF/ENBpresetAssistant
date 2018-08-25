@@ -205,6 +205,15 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
+        ///   查找类似 CommonStr 的本地化字符串。
+        /// </summary>
+        public static string StrRes_Common {
+            get {
+                return ResourceManager.GetString("StrRes_Common", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 CoreStr 的本地化字符串。
         /// </summary>
         public static string StrRes_Core {
