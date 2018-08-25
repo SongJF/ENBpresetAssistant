@@ -26,8 +26,6 @@ namespace ENBpresetAssistant.Pages
     /// </summary>
     public partial class EnbPresets : UserControl
     {
-        private List<PresetData> Presets;
-
         public EnbPresets()
         {
             InitializeComponent();
@@ -35,10 +33,118 @@ namespace ENBpresetAssistant.Pages
             ShowPresets();
         }
 
+        /// <summary>
+        /// 删除该组件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             var thisButton = sender as Button;
             RemoveFromView(thisButton.Tag.ToString());
+        }
+
+        /// <summary>
+        /// 应用该预设
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ApplyPresetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (String.IsNullOrWhiteSpace(SettingsData.TESVPath))
+                {
+                    SB_Message("Error_TESVPathUnset");
+                    return;
+                }
+
+                var CurrentPresets = PresetHelper.GetPresetFromJson();
+                if (CurrentPresets == null) return;
+                var x = CurrentPresets.FirstOrDefault(p => p.isRunning == true);
+                if (CurrentPresets.FirstOrDefault(p => p.isRunning == true) != null)
+                {
+                    SB_Message("Error_ENBRunning");
+                    return;
+                }
+
+                var thisButton = sender as Button;
+                Flipper thisFlipper = MainView.FindName(thisButton.Tag.ToString()) as Flipper;
+                PresetData preset = CurrentPresets.FirstOrDefault(p => p.PresetName == thisFlipper.Tag.ToString());
+                if (preset == null)
+                {
+                    SB_Message("Error_PresetNotFound");
+                    return;
+                }
+                CurrentPresets.Remove(preset);
+                preset.isRunning = true;
+                CurrentPresets.Add(preset);
+
+
+                FileHelper.CP_Folder(SettingsData.StoragePath + ID.Dir_Preset+ "\\" + preset.PresetName, SettingsData.TESVPath);
+
+                PresetHelper.SavePrests(CurrentPresets);
+
+                var newFlipper = CreateFlipper(preset);
+                MainView.Children.Insert(0, newFlipper);
+                MainView.RegisterName(newFlipper.Name, newFlipper);
+                RemoveFromView(thisButton.Tag.ToString());
+
+                SB_Message("Success_PresetApplyed");
+            }
+            catch(Exception exp)
+            {
+                Console.Write(exp);
+                return;
+            }
+        }
+
+        /// <summary>
+        /// 解除该预设的应用
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UnApplyPresetBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (SettingsData.TESVPath == null)
+                {
+                    SB_Message("Error_TESVPathUnset");
+                    return;
+                }
+
+                var CurrentPresets = PresetHelper.GetPresetFromJson();
+                if (CurrentPresets == null) return;
+
+                var thisButton = sender as Button;
+                Flipper thisFlipper = MainView.FindName(thisButton.Tag.ToString()) as Flipper;
+                PresetData preset = CurrentPresets.FirstOrDefault(p => p.PresetName == thisFlipper.Tag.ToString());
+                if (preset == null)
+                {
+                    SB_Message("Error_PresetNotFound");
+                    return;
+                }
+                CurrentPresets.Remove(preset);
+
+
+                preset.isRunning = false;
+                CurrentPresets.Add(preset);
+                var newFlipper = CreateFlipper(preset);
+                AddToView(newFlipper, newFlipper.Name);
+                RemoveFromView(thisButton.Tag.ToString());
+
+                FileHelper.RM_Folder(SettingsData.StoragePath + ID.Dir_Preset+ "\\" + preset.PresetName, SettingsData.TESVPath);
+
+                PresetHelper.SavePrests(CurrentPresets);
+
+                SB_Message("Success_PresetUnApplyed");
+            }
+            catch (Exception exp)
+            {
+                Console.Write(exp);
+                return;
+            }
         }
 
         private async void AddBtn_Click(object sender, RoutedEventArgs e)
@@ -70,7 +176,7 @@ namespace ENBpresetAssistant.Pages
 
                 var newFlipper = CreateFlipper(presetData);
                 RemoveFromView(ID.Preset_ExpText);
-                AddToView(newFlipper, newFlipper.Tag.ToString());
+                AddToView(newFlipper, newFlipper.Name);
 
                 SB_Message("Preset_Added");
             }
@@ -82,17 +188,15 @@ namespace ENBpresetAssistant.Pages
         /// <returns></returns>
         private bool ShowPresets()
         {
-            if (!CheckTESVFolerState())
-            {
-                ShowExpectionText("Unmanaged_ENB");
-                return false;
-            }
-
-            Presets = PresetHelper.GetPresetFromJson();
+            var Presets = PresetHelper.GetPresetFromJson();
             if(Presets==null)
             {
+                if (!CheckTESVFolerState())
+                {
+                    ShowExpectionText("Unmanaged_ENB");
+                    return false;
+                }
                 SB_Message("No_Preset_Managed");
-                PresetHelper.InitPresetJson();
                 return false;
             } 
             if (Presets.Count == 0)
@@ -101,11 +205,19 @@ namespace ENBpresetAssistant.Pages
                 return false;
             }
 
-            var Flippers = CreateFlippers(Presets);
+            var AllFlippers = CreateFlippers(Presets);
+            var ApplyedPreset = Presets.FirstOrDefault(p => p.isRunning == true);
 
-            foreach(var Flipper in Flippers)
+            if(ApplyedPreset!=null)
             {
-                AddToView(Flipper, Flipper.Tag.ToString());
+                var ApplyedFlipper = AllFlippers.FirstOrDefault(p => p.Tag.ToString() == ApplyedPreset.PresetName);
+                AddToView(ApplyedFlipper, ApplyedFlipper.Name);
+                AllFlippers.Remove(ApplyedFlipper);
+            }
+
+            foreach (var thisFlipper in AllFlippers)
+            {
+                AddToView(thisFlipper, thisFlipper.Name);
             }
 
 
@@ -199,7 +311,8 @@ namespace ENBpresetAssistant.Pages
                 Style = (Style)this.FindResource("MaterialDesignCardFlipper"),
                 Margin = new Thickness(30, 20, 30, 20),
                 FrontContent = CreateFrontContent(preset,UUID),
-                Tag = UUID,
+                Name=UUID,
+                Tag = preset.PresetName,
                 Width=180,
                 HorizontalContentAlignment=HorizontalAlignment.Center,
                 VerticalContentAlignment=VerticalAlignment.Top
@@ -234,7 +347,10 @@ namespace ENBpresetAssistant.Pages
                 StateText.Foreground = (Brush)this.FindResource("AccentColorBrush");
                 StateText.Text = LocalizedHelper.GetLocalizedString("State_Running", ID.StrRes_Preset);
                 ChangeStateBtn.Content = new PackIcon() { Kind = PackIconKind.Download };
+                ChangeStateBtn.Click += new RoutedEventHandler(UnApplyPresetBtn_Click);
             }
+            else ChangeStateBtn.Click += new RoutedEventHandler(ApplyPresetBtn_Click);
+            
 
             Grid TitleGrid = new Grid()
             {

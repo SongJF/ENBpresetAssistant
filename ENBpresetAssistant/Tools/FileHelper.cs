@@ -141,18 +141,12 @@ namespace ENBpresetAssistant.Tools
             return CoreFolder.GetDirectories();
         }
 
-        public static async void MV_Folder(string Source, string Target)
-        {
-            DialogHost.Show(new WaitingCircle());
-
-            await Task.Run(() =>
-            {
-                MV_Now(Source,Target);
-                DialogHost.CloseDialogCommand.Execute(null, null);
-            });
-        }
-
-        private static void MV_Now(string Source,string Target)
+        /// <summary>
+        /// 移动文件
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <param name="Target"></param>
+        public static void MV_Folder(string Source,string Target)
         {
             if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
 
@@ -178,7 +172,75 @@ namespace ENBpresetAssistant.Tools
                 string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
 
                 //采用递归的方法实现
-                MV_Now(c, TargetFolder);
+                MV_Folder(c, TargetFolder);
+            });
+        }
+
+        /// <summary>
+        /// 复制文件
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <param name="Target"></param>
+        public static void CP_Folder(string Source,string Target)
+        {
+            if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
+
+            if (!PathAvailableOrNot(Target))
+            {
+                if (!CreateFolder(Target)) throw new Exception("Move Folder Failed: Target Directory Not Available");
+            }
+
+            List<string> Files = new List<string>(Directory.GetFiles(Source));
+            Files.ForEach(c =>
+            {
+                string TargetFile = Path.Combine(Target, Path.GetFileName(c));
+                //覆盖模式
+                if (File.Exists(TargetFile)) File.Delete(TargetFile);
+
+                File.Copy(c, TargetFile);
+            });
+
+            List<string> Folders = new List<string>(Directory.GetDirectories(Source));
+
+            Folders.ForEach(c =>
+            {
+                string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
+
+                //采用递归的方法实现
+                MV_Folder(c, TargetFolder);
+            });
+        }
+
+        /// <summary>
+        /// 删除文件
+        /// </summary>
+        /// <param name="Source"></param>
+        /// <param name="Target"></param>
+        public static void RM_Folder(string Source, string Target)
+        {
+            if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
+
+            if (!PathAvailableOrNot(Target))
+            {
+                if (!CreateFolder(Target)) throw new Exception("Move Folder Failed: Target Directory Not Available");
+            }
+
+            List<string> Files = new List<string>(Directory.GetFiles(Source));
+            Files.ForEach(c =>
+            {
+                string TargetFile = Path.Combine(Target, Path.GetFileName(c));
+                //Delete Target File
+                if (File.Exists(TargetFile)) File.Delete(TargetFile);
+            });
+
+            List<string> Folders = new List<string>(Directory.GetDirectories(Source));
+
+            Folders.ForEach(c =>
+            {
+                string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
+
+                //采用递归的方法实现
+                MV_Folder(c, TargetFolder);
             });
         }
     }

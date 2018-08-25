@@ -123,6 +123,15 @@
   <data name="Btn_Return" xml:space="preserve">
     <value>RETURN</value>
   </data>
+  <data name="Error_ENBRunning" xml:space="preserve">
+    <value>Another ENB Is Running</value>
+  </data>
+  <data name="Error_PresetNotFound" xml:space="preserve">
+    <value>PresetNotFound</value>
+  </data>
+  <data name="Error_TESVPathUnset" xml:space="preserve">
+    <value>TESV Path Unset</value>
+  </data>
   <data name="Falied_To_Get_Presets_Info" xml:space="preserve">
     <value>Falied To Get Presets Info</value>
   </data>
@@ -170,6 +179,12 @@
   </data>
   <data name="State_Running" xml:space="preserve">
     <value>Running</value>
+  </data>
+  <data name="Success_PresetApplyed" xml:space="preserve">
+    <value>Preset Applyed</value>
+  </data>
+  <data name="Success_PresetUnApplyed" xml:space="preserve">
+    <value>Preset UnApplyed</value>
   </data>
   <data name="Unmanaged_ENB" xml:space="preserve">
     <value>Unmanaged ENB Is Running . Please Clean And Try Later</value>

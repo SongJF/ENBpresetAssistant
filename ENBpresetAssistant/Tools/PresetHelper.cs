@@ -95,7 +95,10 @@ namespace ENBpresetAssistant.Tools
             
         }
 
-
+        /// <summary>
+        /// 添加一条preset
+        /// </summary>
+        /// <param name="preset"></param>
         public static void AddPresetJson(PresetData preset)
         {
             var CurrentPresets = GetPresetFromJson();
@@ -104,6 +107,10 @@ namespace ENBpresetAssistant.Tools
             SavePrests(CurrentPresets);
         }
 
+        /// <summary>
+        /// 保存preset
+        /// </summary>
+        /// <param name="presets"></param>
         public static void SavePrests(List<PresetData> presets)
         {
             var JsonStr = JsonConvert.SerializeObject(presets);

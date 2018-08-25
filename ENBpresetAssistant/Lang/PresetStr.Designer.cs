@@ -79,6 +79,33 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 Another ENB Is Running 的本地化字符串。
+        /// </summary>
+        internal static string Error_ENBRunning {
+            get {
+                return ResourceManager.GetString("Error_ENBRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 PresetNotFound 的本地化字符串。
+        /// </summary>
+        internal static string Error_PresetNotFound {
+            get {
+                return ResourceManager.GetString("Error_PresetNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 TESV Path Unset 的本地化字符串。
+        /// </summary>
+        internal static string Error_TESVPathUnset {
+            get {
+                return ResourceManager.GetString("Error_TESVPathUnset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 Falied To Get Presets Info 的本地化字符串。
         /// </summary>
         internal static string Falied_To_Get_Presets_Info {
@@ -219,6 +246,24 @@ namespace ENBpresetAssistant.Lang {
         internal static string State_Running {
             get {
                 return ResourceManager.GetString("State_Running", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Preset Applyed 的本地化字符串。
+        /// </summary>
+        internal static string Success_PresetApplyed {
+            get {
+                return ResourceManager.GetString("Success_PresetApplyed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Preset UnApplyed 的本地化字符串。
+        /// </summary>
+        internal static string Success_PresetUnApplyed {
+            get {
+                return ResourceManager.GetString("Success_PresetUnApplyed", resourceCulture);
             }
         }
         
