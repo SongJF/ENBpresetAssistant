@@ -201,19 +201,19 @@ namespace ENBpresetAssistant.Pages
 
         private void Succeed()
         {
-            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Settins_Saved", "SettingsStr"));
+            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Settins_Saved", Data.ID.StrRes_Settings));
         }
 
         private void Failed()
         {
-            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Save", "SettingsStr"));
+            MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Failed_To_Save", Data.ID.StrRes_Settings));
         }
 
         private bool PathCheck(string Path)
         {
             if (!FileHelper.PathAvailableOrNot(Path))
             {
-                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Path_Does_Not_Exist", "SettingsStr"));
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Path_Does_Not_Exist", Data.ID.StrRes_Settings));
                 return false;
             }
 
@@ -229,7 +229,7 @@ namespace ENBpresetAssistant.Pages
                 };
             if (!FileHelper.FileExistOrNot(TESV, Path, 0))
             {
-                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Not_TESV_Folder", "SettingsStr"));
+                MainWindow.Snackbar.MessageQueue.Enqueue(LocalizedHelper.GetLocalizedString("Not_TESV_Folder", Data.ID.StrRes_Settings));
                 return false;
             }
 
