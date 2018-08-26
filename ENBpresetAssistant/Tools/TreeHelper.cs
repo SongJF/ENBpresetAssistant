@@ -12,6 +12,12 @@ namespace ENBpresetAssistant.Tools
 {
     class TreeHelper
     {
+        /// <summary>
+        /// 根据文件夹生成树
+        /// </summary>
+        /// <param name="Path"></param>
+        /// <param name="rootName"></param>
+        /// <returns></returns>
         public static TreeViewItem GetTreeViewItem(string Path,string rootName)
         {
             TreeViewItem Nodes = new TreeViewItem() { Header = CreateTreeViewFolder(rootName) ,IsExpanded=true};

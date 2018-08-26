@@ -1,23 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using ENBpresetAssistant.Components;
 using ENBpresetAssistant.Data;
 using ENBpresetAssistant.Tools;
 using MaterialDesignThemes.Wpf;
-using Newtonsoft.Json.Linq;
 
 namespace ENBpresetAssistant.Pages
 {
@@ -32,6 +21,8 @@ namespace ENBpresetAssistant.Pages
 
             ShowPresets();
         }
+
+        #region Buttons Click
 
         /// <summary>
         /// 删除该组件
@@ -61,7 +52,6 @@ namespace ENBpresetAssistant.Pages
 
                 var CurrentPresets = PresetHelper.GetPresetFromJson();
                 if (CurrentPresets == null) return;
-                var x = CurrentPresets.FirstOrDefault(p => p.isRunning == true);
                 if (CurrentPresets.FirstOrDefault(p => p.isRunning == true) != null)
                 {
                     SB_Message("Error_ENBRunning");
@@ -147,6 +137,24 @@ namespace ENBpresetAssistant.Pages
             }
         }
 
+        private void DetailBtn_Click(object sender, RoutedEventArgs e)
+        {
+            var thisButton = sender as Button;
+            Flipper thisFlipper = MainView.FindName(thisButton.Tag.ToString()) as Flipper;
+
+            var CurrentPresets = PresetHelper.GetPresetFromJson();
+            PresetData preset = CurrentPresets.FirstOrDefault(p => p.PresetName == thisFlipper.Tag.ToString());
+
+            thisFlipper.BackContent = (CreateBackContent(preset,thisFlipper.Name));
+
+            Flipper.FlipCommand.Execute(null, null);
+        }
+
+        /// <summary>
+        /// 添加Preset
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private async void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             string ZipFile = FileHelper.OpenFileDialog("Zip Files (*.zip)|*.zip");
@@ -181,6 +189,8 @@ namespace ENBpresetAssistant.Pages
                 SB_Message("Preset_Added");
             }
         }
+
+        #endregion
 
         /// <summary>
         /// 展示ENB预设
@@ -337,7 +347,8 @@ namespace ENBpresetAssistant.Pages
 
             TextBlock InstallTime = new TextBlock() { Text = preset.InstallTime.Date.ToString(), Margin = new Thickness(10, 10, 10, 10), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center };
 
-            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10), Command = Flipper.FlipCommand ,Tag=UUID};
+            Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10) ,Tag=UUID};
+            DetailBtn.Click += new RoutedEventHandler(DetailBtn_Click);
 
             Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=UUID};
 
@@ -401,6 +412,8 @@ namespace ENBpresetAssistant.Pages
             ColorZone TitlecolorZone = new ColorZone() { Mode = ColorZoneMode.PrimaryLight, Height = 30 };
 
             TreeView FileTree = new TreeView() { Height=200 ,Margin=new Thickness(10)};
+            FileTree.Items.Clear();
+            FileTree.Items.Add(TreeHelper.GetTreeViewItem(SettingsData.StoragePath + ID.Dir_Preset + "\\" + preset.PresetName, preset.PresetName));
 
             Button DeleteBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Delete }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag= UUID};
             DeleteBtn.Click += new RoutedEventHandler(DeleteBtn_Click);
