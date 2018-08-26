@@ -63,6 +63,7 @@ namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
             {
                 if (CoreSelection.SelectedItem == null) return;
                 DefaultCoreText.Text = CoreSelection.SelectedItem.ToString();
+                FileHelper.CP_Folder(SettingsData.StoragePath + ID.Dir_Core + "\\" + DefaultCoreText.Text, SettingsData.StoragePath + ID.Dir_Preset + "\\" + GlobalVariables_Preset.PresetName);
             }
 
             GlobalVariables_Preset.CoreVersion = DefaultCoreText.Text;
