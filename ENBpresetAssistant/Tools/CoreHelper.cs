@@ -37,11 +37,21 @@ namespace ENBpresetAssistant.Tools
         /// <summary>
         /// 保存core
         /// </summary>
-        /// <param name="presets"></param>
-        public static void SavePrests(List<CoreData> presets)
+        /// <param name="Cores"></param>
+        public static void SaveCores(List<CoreData> Cores)
         {
-            var JsonStr = JsonConvert.SerializeObject(presets);
+            var JsonStr = JsonConvert.SerializeObject(Cores);
             JsonHelper.JsonSave(CoresConfigPath, JsonStr);
+        }
+
+        public static void AddCore(CoreData coreData)
+        {
+            var Cores = GetCoresFromJson();
+            if (Cores == null) Cores = new List<CoreData>();
+
+            Cores.Add(coreData);
+
+            SaveCores(Cores);
         }
     }
 }

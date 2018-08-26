@@ -1,4 +1,5 @@
 ﻿using ENBpresetAssistant.Data;
+using ENBpresetAssistant.Pages.InstallWin.CoreAdd;
 using ENBpresetAssistant.Tools;
 using MaterialDesignThemes.Wpf;
 using System;
@@ -43,6 +44,26 @@ namespace ENBpresetAssistant.Pages
             GlobalVariables_Core.Init_Variables();
             GlobalVariables_Core.ZipName = ZipName;
 
+            CoreInstall coreInstall = new CoreInstall();
+            coreInstall.Owner = MainWindow.GlobalMainWindow;
+            coreInstall.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            coreInstall.ShowDialog();
+
+            if(GlobalVariables_Core.isCompelete)
+            {
+                CoreData coreData = new CoreData()
+                {
+                    CoreVersion = GlobalVariables_Core.CoreVersion,
+                    InstallTime = DateTime.UtcNow
+                };
+                CoreHelper.AddCore(coreData);
+
+                var newCard = CreateCard(coreData);
+                AddToView(newCard, newCard.Name);
+
+                SB_Message("Success_CoreAdded");
+            }
+            
 
         }
 
@@ -59,7 +80,7 @@ namespace ENBpresetAssistant.Pages
                 FileHelper.RM_Folder(SettingsData.StoragePath + ID.Dir_Core + "\\" + thisCore.CoreVersion);
 
                 Cores.Remove(thisCore);
-                CoreHelper.SavePrests(Cores);
+                CoreHelper.SaveCores(Cores);
 
                 RemoveFromView(thisButton.Tag.ToString());
 
@@ -92,7 +113,7 @@ namespace ENBpresetAssistant.Pages
             if(AllCards==null)
             {
                 SB_Message("Error_FailedToGetCores");
-                CoreHelper.SavePrests(null);
+                CoreHelper.SaveCores(null);
                 return false;
             }
 
@@ -133,15 +154,15 @@ namespace ENBpresetAssistant.Pages
                 UUID = UUID.Substring(1);
             }
 
-            TextBlock CoreVersion = new TextBlock() { Text = coreData.CoreVersion, Style = (Style)this.FindResource("MaterialDesignTitleTextBlock") };
-            TextBlock InstallTime = new TextBlock() { Text = coreData.InstallTime.ToString(), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock") };
-            TreeView FileTree = new TreeView() { Margin = new Thickness(10) };
+            TextBlock CoreVersion = new TextBlock() { Text = coreData.CoreVersion, Style = (Style)this.FindResource("MaterialDesignTitleTextBlock"),HorizontalAlignment=HorizontalAlignment.Center,Margin=new Thickness(10) };
+            TextBlock InstallTime = new TextBlock() { Text = coreData.InstallTime.ToString(), Style = (Style)this.FindResource("MaterialDesignBody1TextBlock"), HorizontalAlignment = HorizontalAlignment.Center, Margin = new Thickness(10) };
+            TreeView FileTree = new TreeView() { Margin = new Thickness(10),MaxHeight=200 , HorizontalAlignment = HorizontalAlignment.Center };
             FileTree.Items.Clear();
             FileTree.Items.Add(TreeHelper.GetTreeViewItem(SettingsData.StoragePath + ID.Dir_Core + "\\" + coreData.CoreVersion, coreData.CoreVersion));
-            Button DeleteBtn=new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Delete", ID.StrRes_Core), Margin = new Thickness(10),  Tag = UUID };
+            Button DeleteBtn=new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Delete", ID.StrRes_Core), Margin = new Thickness(10), HorizontalAlignment = HorizontalAlignment.Stretch, Tag = UUID };
             DeleteBtn.Click += new RoutedEventHandler(DeleteBtn_Click);
 
-            var Container = new DockPanel();
+            var Container = new StackPanel();
             Container.Children.Add(CoreVersion);
             Container.Children.Add(InstallTime);
             Container.Children.Add(FileTree);
@@ -152,9 +173,12 @@ namespace ENBpresetAssistant.Pages
                 Background = (Brush)FindResource("PrimaryHueDarkBrush"),
                 Foreground = (Brush)FindResource("PrimaryHueDarkForegroundBrush"),
                 Padding = new Thickness(10),
+                Margin= new Thickness(10,0,10,0),
                 Content = Container,
                 Tag=coreData.CoreVersion,
-                Name=UUID
+                Name=UUID,
+                Width=250,Height=360,
+                VerticalAlignment=VerticalAlignment.Center
             };
 
             return card;

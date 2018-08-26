@@ -95,8 +95,10 @@
     <Compile Include="Pages\InstallWin\CoreAdd\CoreInstall.xaml.cs">
       <DependentUpon>CoreInstall.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\InstallWin\CoreAdd\CoreInstallViewModel.cs" />
+    <Compile Include="ValidationRules\CoreNotRepeatValidationRule.cs" />
     <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
-    <Compile Include="ValidationRules\NotRepeatValidationRule.cs" />
+    <Compile Include="ValidationRules\PresetNotRepeatValidationRule.cs" />
     <Compile Include="Pages\InstallWin\PresetAdd\PresetInstall.xaml.cs">
       <DependentUpon>PresetInstall.xaml</DependentUpon>
     </Compile>

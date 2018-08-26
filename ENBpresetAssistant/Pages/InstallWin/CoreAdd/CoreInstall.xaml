@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ENBpresetAssistant.Pages.InstallWin.CoreAdd"
         mc:Ignorable="d"
-        Title="CoreInstall" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="CoreInstall" Height="450" Width="310" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" BorderThickness="10"
+        xmlns:res="clr-namespace:ENBpresetAssistant.Data"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Validation="clr-namespace:ENBpresetAssistant.ValidationRules"
+        lex:LocalizeDictionary.DesignCulture="{x:Static res:ID.English}"
+        lex:ResxLocalizationProvider.DefaultAssembly="ENBpresetAssistant"
+        lex:ResxLocalizationProvider.DefaultDictionary="{x:Static res:ID.StrRes_Core}">
+    <Window.Effect>
+        <DropShadowEffect ShadowDepth="3" BlurRadius="6" Direction="270" Opacity="0.75" Color="#FF211613"/>
+    </Window.Effect>
+    <DockPanel>
+        <materialDesign:ColorZone Mode="PrimaryDark" Height="30" HorizontalAlignment="Stretch" MouseLeftButtonDown="ColorZone_MouseLeftButtonDown" DockPanel.Dock="Top">
+            <Button VerticalAlignment="Center" HorizontalAlignment="Right" Click="CloseBtn_Click" Style="{StaticResource MaterialDesignFlatButton}"  Background="{StaticResource AccentColorBrush3}">
+                <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
+            </Button>
+        </materialDesign:ColorZone>
+
+        <materialDesign:ColorZone Mode="Light" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="0.8*"/>
+                    <RowDefinition Height="1.2*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource MaterialDesignTitleTextBlock}" Margin="10" Text="{lex:Loc Intro_Coreversion}" VerticalAlignment="Top" />
+
+                    <TextBox materialDesign:HintAssist.Hint="{lex:Loc Intro_ENBCoreVersion}" Margin="20,0"  HorizontalContentAlignment="Center" x:Name="CoreVersionText">
+                        <TextBox.Text>
+                            <Binding Path="CoreVersion" UpdateSourceTrigger="PropertyChanged" >
+                                <Binding.ValidationRules>
+                                    <Validation:CoreNotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
+                    </TextBox>
+                </StackPanel>
+
+                <TreeView Grid.Row="1" Margin="10" x:Name="DirectotyTree" PreviewMouseRightButtonDown="DirectotyTree_PreviewMouseRightButtonDown"/>
+
+                <TextBlock Grid.Row="2" x:Name="CoreAvailability" Style="{StaticResource MaterialDesignSubheadingTextBlock}"/>
+
+                <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}"                     
+                    Click="InstallBtn_Click"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
+                    materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}"
+                    Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="40">
+                    <materialDesign:PackIcon Kind="Download" />
+                </Button>
+            </Grid>
+        </materialDesign:ColorZone>
+    </DockPanel>
 </Window>

@@ -12,12 +12,15 @@ namespace ENBpresetAssistant.Data
 
         public static string CoreVersion { get; set; }
 
+        public static string RouterInTemp { get; set; }
+
         public static bool isCompelete { get; set; }
 
         public static void Init_Variables()
         {
             ZipName = null;
             CoreVersion = null;
+            RouterInTemp = null;
             isCompelete = false;
         }
     }

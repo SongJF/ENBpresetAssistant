@@ -126,8 +126,20 @@
   <data name="Error_FailedToGetCores" xml:space="preserve">
     <value>Failed To GetCores</value>
   </data>
+  <data name="Intro_CoreAvailable" xml:space="preserve">
+    <value>Seems Good</value>
+  </data>
+  <data name="Intro_CoreUnavailable" xml:space="preserve">
+    <value>Maybe Somthing Wrong</value>
+  </data>
   <data name="Intro_Coreversion" xml:space="preserve">
-    <value>Coreversion</value>
+    <value>Core Version</value>
+  </data>
+  <data name="Intro_ENBCoreVersion" xml:space="preserve">
+    <value>Fill In Core Version</value>
+  </data>
+  <data name="Success_CoreAdded" xml:space="preserve">
+    <value>Core Added</value>
   </data>
   <data name="Success_CoreRemoved" xml:space="preserve">
     <value>Core Removed</value>

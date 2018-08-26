@@ -43,7 +43,7 @@
                         <TextBox.Text>
                             <Binding Path="PresetName" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
-                                    <Validation:NotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
+                                    <Validation:PresetNotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -76,7 +76,6 @@
 
                 <Button Style="{StaticResource MaterialDesignFloatingActionLightButton}"                     
                     Click="InstallBtn_Click"
-                    Command="{Binding SaveComand}"
                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="{Binding IsSaving}"
                     materialDesign:ButtonProgressAssist.Value="{Binding SaveProgress}"
                     Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Center" Height="40" Width="40">

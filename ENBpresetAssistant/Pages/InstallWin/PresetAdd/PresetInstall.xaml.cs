@@ -68,7 +68,7 @@ namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
             GlobalVariables_Preset.CoreVersion = DefaultCoreText.Text;
             GlobalVariables_Preset.PresetName = PresetNameText.Text;
 
-            FileHelper.MV_Folder(Directory.GetCurrentDirectory() + "\\Temp" + GlobalVariables_Preset.RouterInTemp, SettingsData.StoragePath + ID.Dir_Preset + "\\" + GlobalVariables_Preset.PresetName);
+            FileHelper.MV_Folder(Directory.GetCurrentDirectory() + ID.Dir_Temp + GlobalVariables_Preset.RouterInTemp, SettingsData.StoragePath + ID.Dir_Preset + "\\" + GlobalVariables_Preset.PresetName);
             GlobalVariables_Preset.AddComplete = true;
             this.Close();
         }
@@ -89,6 +89,10 @@ namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
             }
         }
 
+        /// <summary>
+        /// 判断目录是否可用
+        /// </summary>
+        /// <param name="Path"></param>
         private void ShowPresetAvailability(string Path)
         {
             List<string> ENBFiles = new List<string>()

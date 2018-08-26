@@ -88,11 +88,47 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
-        ///   查找类似 Coreversion 的本地化字符串。
+        ///   查找类似 Seems Good 的本地化字符串。
+        /// </summary>
+        internal static string Intro_CoreAvailable {
+            get {
+                return ResourceManager.GetString("Intro_CoreAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Maybe Somthing Wrong 的本地化字符串。
+        /// </summary>
+        internal static string Intro_CoreUnavailable {
+            get {
+                return ResourceManager.GetString("Intro_CoreUnavailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Core Version 的本地化字符串。
         /// </summary>
         internal static string Intro_Coreversion {
             get {
                 return ResourceManager.GetString("Intro_Coreversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Fill In Core Version 的本地化字符串。
+        /// </summary>
+        internal static string Intro_ENBCoreVersion {
+            get {
+                return ResourceManager.GetString("Intro_ENBCoreVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Core Added 的本地化字符串。
+        /// </summary>
+        internal static string Success_CoreAdded {
+            get {
+                return ResourceManager.GetString("Success_CoreAdded", resourceCulture);
             }
         }
         

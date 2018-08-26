@@ -9,7 +9,7 @@ using System.Windows.Controls;
 
 namespace ENBpresetAssistant.ValidationRules
 {
-    public class NotRepeatValidationRule : ValidationRule
+    public class PresetNotRepeatValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
