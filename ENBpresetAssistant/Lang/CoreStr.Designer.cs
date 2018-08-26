@@ -59,5 +59,50 @@ namespace ENBpresetAssistant.Lang {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   查找类似 DELETE 的本地化字符串。
+        /// </summary>
+        internal static string Btn_Delete {
+            get {
+                return ResourceManager.GetString("Btn_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed To Delete 的本地化字符串。
+        /// </summary>
+        internal static string Error_FailedToDelete {
+            get {
+                return ResourceManager.GetString("Error_FailedToDelete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Failed To GetCores 的本地化字符串。
+        /// </summary>
+        internal static string Error_FailedToGetCores {
+            get {
+                return ResourceManager.GetString("Error_FailedToGetCores", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Coreversion 的本地化字符串。
+        /// </summary>
+        internal static string Intro_Coreversion {
+            get {
+                return ResourceManager.GetString("Intro_Coreversion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Core Removed 的本地化字符串。
+        /// </summary>
+        internal static string Success_CoreRemoved {
+            get {
+                return ResourceManager.GetString("Success_CoreRemoved", resourceCulture);
+            }
+        }
     }
 }

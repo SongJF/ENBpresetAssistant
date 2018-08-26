@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:ENBpresetAssistant.Pages.InstallWin.PresetAdd"
         mc:Ignorable="d" 
         ShowInTaskbar="False"
+        xmlns:Validation="clr-namespace:ENBpresetAssistant.ValidationRules"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         Title="AddPresetIntro" Height="450" Width="310" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" BorderThickness="10"
         xmlns:res="clr-namespace:ENBpresetAssistant.Data"
@@ -42,7 +43,7 @@
                         <TextBox.Text>
                             <Binding Path="PresetName" UpdateSourceTrigger="PropertyChanged" >
                                 <Binding.ValidationRules>
-                                    <local:NotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
+                                    <Validation:NotRepeatValidationRule ValidatesOnTargetUpdated="True"/>
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
@@ -57,7 +58,7 @@
                             <TextBox.Text>
                                 <Binding Path="ContainedCoreVersion" UpdateSourceTrigger="PropertyChanged" >
                                     <Binding.ValidationRules>
-                                        <local:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
+                                        <Validation:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>

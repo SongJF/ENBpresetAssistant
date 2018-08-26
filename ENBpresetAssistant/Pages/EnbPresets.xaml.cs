@@ -180,7 +180,7 @@ namespace ENBpresetAssistant.Pages
             if (String.IsNullOrEmpty(ZipFile)) return;
             string ZipName = ZipFile.Substring(ZipFile.LastIndexOf("\\") + 1, ZipFile.LastIndexOf(".") - (ZipFile.LastIndexOf("\\") + 1));
 
-            await PresetHelper.TempUnzip(ZipFile);
+            await FileHelper.TempUnzip(ZipFile);
 
             GlobalVariables_Preset.Init_Variables();
             GlobalVariables_Preset.ZipName = ZipName;

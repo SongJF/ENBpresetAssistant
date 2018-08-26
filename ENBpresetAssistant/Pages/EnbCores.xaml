@@ -6,12 +6,21 @@
              xmlns:local="clr-namespace:ENBpresetAssistant.Pages"
              xmlns:res="clr-namespace:ENBpresetAssistant.Data"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              lex:LocalizeDictionary.DesignCulture="{x:Static res:ID.English}"
              lex:ResxLocalizationProvider.DefaultAssembly="ENBpresetAssistant"
              lex:ResxLocalizationProvider.DefaultDictionary="CoreStr"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock>EnbCores</TextBlock>
-    </Grid>
+    <StackPanel VerticalAlignment="Stretch" Orientation="Horizontal">
+        <StackPanel Orientation="Horizontal" x:Name="MainView"/>
+
+        <Button 
+            Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+            ToolTip="MaterialDesignFloatingActionDarkButton"
+            VerticalAlignment="Center" Margin="30"
+            Click="AddBtn_Click">
+            <materialDesign:PackIcon Kind="Plus" Height="24" Width="24" />
+        </Button>
+    </StackPanel>
 </UserControl>

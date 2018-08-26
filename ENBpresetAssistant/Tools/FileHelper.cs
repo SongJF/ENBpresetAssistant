@@ -1,4 +1,5 @@
 ﻿using ENBpresetAssistant.Components;
+using ENBpresetAssistant.Data;
 using MaterialDesignThemes.Wpf;
 using System;
 using System.Collections.Generic;
@@ -244,9 +245,55 @@ namespace ENBpresetAssistant.Tools
             });
         }
 
+        /// <summary>
+        /// 删除文件夹下所有内容
+        /// </summary>
+        /// <param name="path"></param>
         public static void RM_Folder(string path)
         {
             Directory.Delete(path, true);
+        }
+
+        /// <summary>
+        /// 解压压缩包
+        /// </summary>
+        /// <param name="ZipFile"></param>
+        /// <returns></returns>
+        public async static Task TempUnzip(string ZipFile)
+        {
+            DialogHost.Show(new WaitingCircle());
+
+            await Task.Run(() =>
+            {
+                UnzipFile(ZipFile);
+            });
+
+            DialogHost.CloseDialogCommand.Execute(null, null);
+
+        }
+
+        /// <summary>
+        /// 解压文件到临时文件夹
+        /// </summary>
+        /// <param name="ZipFile">Zip File Path</param>
+        /// <returns></returns>
+        private static bool UnzipFile(string ZipFile)
+        {
+            try
+            {
+                string TempFolderPath = Directory.GetCurrentDirectory() + ID.Dir_Temp;
+
+                CreateEmptyFolder(TempFolderPath);
+
+                ZipHelper.Unzip(ZipFile, TempFolderPath);
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MainWindow.Snackbar.MessageQueue.Enqueue("Error: " + e.ToString());
+                return false;
+            }
         }
     }
 }

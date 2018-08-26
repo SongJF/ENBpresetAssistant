@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 
 namespace ENBpresetAssistant.Data
 {
-    class GlobalVariables_Core
+    public class GlobalVariables_Core
     {
-        /*
-        private static List<CoreData> _Cores;
-        public static List<CoreData> Cores
-        {
-            get { return _Cores; }
+        public static string ZipName { get; set; }
 
-            set { _Cores = value; }
+        public static string CoreVersion { get; set; }
+
+        public static bool isCompelete { get; set; }
+
+        public static void Init_Variables()
+        {
+            ZipName = null;
+            CoreVersion = null;
+            isCompelete = false;
         }
-        */
     }
 }

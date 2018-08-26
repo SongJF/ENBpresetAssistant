@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
+namespace ENBpresetAssistant.ValidationRules
 {
     public class NotEmptyValidationRule : ValidationRule
     {

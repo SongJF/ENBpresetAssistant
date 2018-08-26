@@ -92,8 +92,11 @@
       <DependentUpon>ID.resx</DependentUpon>
     </Compile>
     <Compile Include="Data\PresetData.cs" />
-    <Compile Include="Pages\InstallWin\PresetAdd\NotEmptyValidationRule.cs" />
-    <Compile Include="Pages\InstallWin\PresetAdd\NotRepeatValidationRule.cs" />
+    <Compile Include="Pages\InstallWin\CoreAdd\CoreInstall.xaml.cs">
+      <DependentUpon>CoreInstall.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValidationRules\NotEmptyValidationRule.cs" />
+    <Compile Include="ValidationRules\NotRepeatValidationRule.cs" />
     <Compile Include="Pages\InstallWin\PresetAdd\PresetInstall.xaml.cs">
       <DependentUpon>PresetInstall.xaml</DependentUpon>
     </Compile>
@@ -151,6 +154,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\EnbPresets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InstallWin\CoreAdd\CoreInstall.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

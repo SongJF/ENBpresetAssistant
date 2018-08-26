@@ -33,5 +33,15 @@ namespace ENBpresetAssistant.Tools
                 return null;
             }
         }
+
+        /// <summary>
+        /// 保存core
+        /// </summary>
+        /// <param name="presets"></param>
+        public static void SavePrests(List<CoreData> presets)
+        {
+            var JsonStr = JsonConvert.SerializeObject(presets);
+            JsonHelper.JsonSave(CoresConfigPath, JsonStr);
+        }
     }
 }
