@@ -139,7 +139,8 @@ namespace ENBpresetAssistant.Pages
                 preset.isRunning = false;
                 CurrentPresets.Add(preset);
                 var newFlipper = CreateFlipper(preset);
-                AddToView(newFlipper, newFlipper.Name);
+                MainView.Children.Insert(0, newFlipper);
+                MainView.RegisterName(newFlipper.Name, newFlipper);
                 RemoveFromView(thisButton.Tag.ToString());
 
                 FileHelper.RM_FolderBySource(SettingsData.StoragePath + ID.Dir_Preset+ "\\" + preset.PresetName, SettingsData.TESVPath);
@@ -368,14 +369,14 @@ namespace ENBpresetAssistant.Pages
             Button DetailBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFlatButton"), Content = LocalizedHelper.GetLocalizedString("Btn_Detail", ID.StrRes_Preset), Margin = new Thickness(10) ,Tag=UUID};
             DetailBtn.Click += new RoutedEventHandler(DetailBtn_Click);
 
-            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Upload }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=UUID};
+            Button ChangeStateBtn = new Button() { Style = (Style)this.FindResource("MaterialDesignFloatingActionMiniAccentButton"), Content = new PackIcon() { Kind = PackIconKind.Play }, HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom, Margin = new Thickness(0, 0, 16, -25) ,Tag=UUID};
 
             if (preset.isRunning)
             {
                 TitlecolorZone.Mode = ColorZoneMode.PrimaryDark;
                 StateText.Foreground = (Brush)this.FindResource("AccentColorBrush");
                 StateText.Text = LocalizedHelper.GetLocalizedString("State_Running", ID.StrRes_Preset);
-                ChangeStateBtn.Content = new PackIcon() { Kind = PackIconKind.Download };
+                ChangeStateBtn.Content = new PackIcon() { Kind = PackIconKind.Stop };
                 ChangeStateBtn.Click += new RoutedEventHandler(UnApplyPresetBtn_Click);
             }
             else ChangeStateBtn.Click += new RoutedEventHandler(ApplyPresetBtn_Click);
