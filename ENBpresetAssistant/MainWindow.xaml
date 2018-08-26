@@ -23,6 +23,29 @@
 
     <Grid>
         <materialDesign:DialogHost SnackbarMessageQueue="{Binding ElementName=MainSnackbar, Path=MessageQueue}" DialogClosing="DialogHost_DialogClosing">
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="30">
+                    <TextBlock FontSize="20" Text="{lex:Loc Are_You_Sure_To_Exit}"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                Command="materialDesign:DialogHost.CloseDialogCommand"
+                                                Margin="16 16 10 0" FontSize="15"
+                                                Content="{lex:Loc Yes}">
+                            <Button.CommandParameter>
+                                <system:Boolean>True</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                        <Button Style="{StaticResource MaterialDesignFlatButton}"
+                                                Margin="16 16 10 0"
+                                                Command="materialDesign:DialogHost.CloseDialogCommand" FontSize="15"
+                                                Content="{lex:Loc No}">
+                            <Button.CommandParameter>
+                                <system:Boolean>False</system:Boolean>
+                            </Button.CommandParameter>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
 
             <materialDesign:DrawerHost IsLeftDrawerOpen="{Binding ElementName=MenuToggleButton, Path=IsChecked}">
                 <!--设置左侧边栏-->
@@ -63,29 +86,6 @@
                             materialDesign:ShadowAssist.ShadowDepth="Depth0"
                             Command="{x:Static materialDesign:DialogHost.OpenDialogCommand}"
                             Width="30" Height="30">
-                                <Button.CommandParameter>
-                                    <StackPanel Margin="30">
-                                        <TextBlock FontSize="20" Text="{lex:Loc Are_You_Sure_To_Exit}"/>
-                                        <StackPanel Orientation="Horizontal">
-                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                                Command="materialDesign:DialogHost.CloseDialogCommand"
-                                                Margin="16 16 10 0" FontSize="15"
-                                                Content="{lex:Loc Yes}">
-                                                <Button.CommandParameter>
-                                                    <system:Boolean>True</system:Boolean>
-                                                </Button.CommandParameter>
-                                            </Button>
-                                            <Button Style="{StaticResource MaterialDesignFlatButton}"
-                                                Margin="16 16 10 0"
-                                                Command="materialDesign:DialogHost.CloseDialogCommand" FontSize="15"
-                                                Content="{lex:Loc No}">
-                                                <Button.CommandParameter>
-                                                    <system:Boolean>False</system:Boolean>
-                                                </Button.CommandParameter>
-                                            </Button>
-                                        </StackPanel>
-                                    </StackPanel>
-                                </Button.CommandParameter>
                                 <materialDesign:PackIcon Kind="Close" Width="20" Height="20"/>
                             </Button>
 
