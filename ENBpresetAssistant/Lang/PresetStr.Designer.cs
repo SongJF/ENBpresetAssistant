@@ -97,6 +97,15 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 The Preset Is Running 的本地化字符串。
+        /// </summary>
+        internal static string Error_PresetRunning {
+            get {
+                return ResourceManager.GetString("Error_PresetRunning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TESV Path Unset 的本地化字符串。
         /// </summary>
         internal static string Error_TESVPathUnset {
@@ -255,6 +264,15 @@ namespace ENBpresetAssistant.Lang {
         internal static string Success_PresetApplyed {
             get {
                 return ResourceManager.GetString("Success_PresetApplyed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 Preset Removed 的本地化字符串。
+        /// </summary>
+        internal static string Success_PresetRemoved {
+            get {
+                return ResourceManager.GetString("Success_PresetRemoved", resourceCulture);
             }
         }
         

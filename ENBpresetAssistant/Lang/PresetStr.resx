@@ -129,6 +129,9 @@
   <data name="Error_PresetNotFound" xml:space="preserve">
     <value>PresetNotFound</value>
   </data>
+  <data name="Error_PresetRunning" xml:space="preserve">
+    <value>The Preset Is Running</value>
+  </data>
   <data name="Error_TESVPathUnset" xml:space="preserve">
     <value>TESV Path Unset</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Success_PresetApplyed" xml:space="preserve">
     <value>Preset Applyed</value>
+  </data>
+  <data name="Success_PresetRemoved" xml:space="preserve">
+    <value>Preset Removed</value>
   </data>
   <data name="Success_PresetUnApplyed" xml:space="preserve">
     <value>Preset UnApplyed</value>

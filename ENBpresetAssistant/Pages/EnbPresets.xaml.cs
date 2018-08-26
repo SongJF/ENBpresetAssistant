@@ -32,7 +32,25 @@ namespace ENBpresetAssistant.Pages
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
             var thisButton = sender as Button;
+            Flipper thisFlipper = MainView.FindName(thisButton.Tag.ToString()) as Flipper;
+
+            var CurrentPresets = PresetHelper.GetPresetFromJson();
+            var thisPreset = CurrentPresets.FirstOrDefault(p => p.PresetName == thisFlipper.Tag.ToString());
+
+            if(thisPreset.isRunning)
+            {
+                SB_Message("Error_PresetRunning");
+                return;
+            }
+
+            FileHelper.RM_Folder(SettingsData.StoragePath + ID.Dir_Preset + "\\" + thisPreset.PresetName);
+
+            CurrentPresets.Remove(thisPreset);
+            PresetHelper.SavePrests(CurrentPresets);
+
             RemoveFromView(thisButton.Tag.ToString());
+
+            SB_Message("Success_PresetRemoved");
         }
 
         /// <summary>
@@ -124,7 +142,7 @@ namespace ENBpresetAssistant.Pages
                 AddToView(newFlipper, newFlipper.Name);
                 RemoveFromView(thisButton.Tag.ToString());
 
-                FileHelper.RM_Folder(SettingsData.StoragePath + ID.Dir_Preset+ "\\" + preset.PresetName, SettingsData.TESVPath);
+                FileHelper.RM_FolderBySource(SettingsData.StoragePath + ID.Dir_Preset+ "\\" + preset.PresetName, SettingsData.TESVPath);
 
                 PresetHelper.SavePrests(CurrentPresets);
 

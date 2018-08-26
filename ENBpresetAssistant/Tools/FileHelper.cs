@@ -207,7 +207,7 @@ namespace ENBpresetAssistant.Tools
                 string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
 
                 //采用递归的方法实现
-                MV_Folder(c, TargetFolder);
+                CP_Folder(c, TargetFolder);
             });
         }
 
@@ -216,7 +216,7 @@ namespace ENBpresetAssistant.Tools
         /// </summary>
         /// <param name="Source"></param>
         /// <param name="Target"></param>
-        public static void RM_Folder(string Source, string Target)
+        public static void RM_FolderBySource(string Source, string Target)
         {
             if (!Directory.Exists(Source)) throw new Exception("Move Folder Failed: Source Directory Not Exist");
 
@@ -240,8 +240,13 @@ namespace ENBpresetAssistant.Tools
                 string TargetFolder = Path.Combine(Target, Path.GetFileName(c));
 
                 //采用递归的方法实现
-                MV_Folder(c, TargetFolder);
+                RM_FolderBySource(c, TargetFolder);
             });
+        }
+
+        public static void RM_Folder(string path)
+        {
+            Directory.Delete(path, true);
         }
     }
 }
