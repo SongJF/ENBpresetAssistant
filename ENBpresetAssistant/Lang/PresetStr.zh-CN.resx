@@ -117,7 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Test" xml:space="preserve">
-    <value>中文</value>
+  <data name="Btn_Detail" xml:space="preserve">
+    <value>更多</value>
+  </data>
+  <data name="Btn_Return" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Error_ENBRunning" xml:space="preserve">
+    <value>已有ENB运行中</value>
+  </data>
+  <data name="Error_PresetNotFound" xml:space="preserve">
+    <value>未找到ENB预设</value>
+  </data>
+  <data name="Error_PresetRunning" xml:space="preserve">
+    <value>该预设正在运行</value>
+  </data>
+  <data name="Error_TESVPathUnset" xml:space="preserve">
+    <value>TESV 路径未设置</value>
+  </data>
+  <data name="Falied_To_Get_Presets_Info" xml:space="preserve">
+    <value>读取预设失败</value>
+  </data>
+  <data name="Intro_CoreVersion" xml:space="preserve">
+    <value>ENB核心版本</value>
+  </data>
+  <data name="Intro_ENBPresetName" xml:space="preserve">
+    <value>ENB预设名称</value>
+  </data>
+  <data name="Intro_FillDefaultCore" xml:space="preserve">
+    <value>填入ENB核心版本</value>
+  </data>
+  <data name="Intro_PresetName" xml:space="preserve">
+    <value>ENB预设名称</value>
+  </data>
+  <data name="Intro_Preset_Available" xml:space="preserve">
+    <value>看起来没问题</value>
+  </data>
+  <data name="Intro_Preset_Unavailable" xml:space="preserve">
+    <value>似乎有点问题(大概)</value>
+  </data>
+  <data name="Intro_SelectInstalledCore" xml:space="preserve">
+    <value>选择安装的核心</value>
+  </data>
+  <data name="Intro_SetRoot" xml:space="preserve">
+    <value>设为根目录</value>
+  </data>
+  <data name="Intro_UseDefaultCore" xml:space="preserve">
+    <value>自带的核心</value>
+  </data>
+  <data name="Intro_UseInstalledCore" xml:space="preserve">
+    <value>安装的核心</value>
+  </data>
+  <data name="Intro_Validation_Required" xml:space="preserve">
+    <value>此项必填</value>
+  </data>
+  <data name="No_Preset_Managed" xml:space="preserve">
+    <value>无可用预设</value>
+  </data>
+  <data name="Preset_Added" xml:space="preserve">
+    <value>预设添加成功</value>
+  </data>
+  <data name="State_Available" xml:space="preserve">
+    <value>可用</value>
+  </data>
+  <data name="State_Running" xml:space="preserve">
+    <value>正在运行</value>
+  </data>
+  <data name="Success_PresetApplyed" xml:space="preserve">
+    <value>预设已应用</value>
+  </data>
+  <data name="Success_PresetRemoved" xml:space="preserve">
+    <value>预设已删除</value>
+  </data>
+  <data name="Success_PresetUnApplyed" xml:space="preserve">
+    <value>预设已取消应用</value>
+  </data>
+  <data name="Unmanaged_ENB" xml:space="preserve">
+    <value>存在未经管理的ENB 请清除后继续</value>
   </data>
 </root>
