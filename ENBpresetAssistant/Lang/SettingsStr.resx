@@ -162,4 +162,13 @@
   <data name="Folder_Created" xml:space="preserve">
     <value>Folder Created</value>
   </data>
+  <data name="Str_Off" xml:space="preserve">
+    <value>Off</value>
+  </data>
+  <data name="Str_On" xml:space="preserve">
+    <value>On</value>
+  </data>
+  <data name="Str_VerificationMode" xml:space="preserve">
+    <value>VerificationMode</value>
+  </data>
 </root>

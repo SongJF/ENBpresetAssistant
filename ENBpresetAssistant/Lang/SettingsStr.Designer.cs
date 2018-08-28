@@ -160,6 +160,33 @@ namespace ENBpresetAssistant.Lang {
         }
         
         /// <summary>
+        ///   查找类似 Off 的本地化字符串。
+        /// </summary>
+        internal static string Str_Off {
+            get {
+                return ResourceManager.GetString("Str_Off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 On 的本地化字符串。
+        /// </summary>
+        internal static string Str_On {
+            get {
+                return ResourceManager.GetString("Str_On", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 VerificationMode 的本地化字符串。
+        /// </summary>
+        internal static string Str_VerificationMode {
+            get {
+                return ResourceManager.GetString("Str_VerificationMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 TESV 的本地化字符串。
         /// </summary>
         internal static string TESV {

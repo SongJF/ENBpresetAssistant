@@ -162,4 +162,13 @@
   <data name="Folder_Created" xml:space="preserve">
     <value>新文件夹已创建</value>
   </data>
+  <data name="Str_Off" xml:space="preserve">
+    <value>关</value>
+  </data>
+  <data name="Str_On" xml:space="preserve">
+    <value>开</value>
+  </data>
+  <data name="Str_VerificationMode" xml:space="preserve">
+    <value>开启验证</value>
+  </data>
 </root>

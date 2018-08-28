@@ -180,4 +180,7 @@
   <data name="StrRes_Common" xml:space="preserve">
     <value>CommonStr</value>
   </data>
+  <data name="ST_VerificationMode" xml:space="preserve">
+    <value>VerificationMode</value>
+  </data>
 </root>

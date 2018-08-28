@@ -79,9 +79,10 @@
 
                     <Grid Margin="10">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.6*"/>
                             <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="4*"/>
-                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="3*"/>
+                            <ColumnDefinition Width="3*"/>
                         </Grid.ColumnDefinitions>
 
                         <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}"  Margin="10" Text="{lex:Loc Language}" Grid.Column="0"/>
@@ -94,6 +95,13 @@
                                 English
                             </ComboBoxItem>
                         </ComboBox>
+
+                        <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}"  Margin="10" Text="{lex:Loc Str_VerificationMode}" Grid.Column="2"/>
+                        <DockPanel Margin="10,10,0,10" Grid.Column="3">
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Text="{lex:Loc Str_Off}"/>
+                            <ToggleButton Margin="8 0 16 0"  Click="VerificationMode_Click" IsChecked="{Binding VerificationMode}" />
+                            <TextBlock VerticalAlignment="Center" Style="{StaticResource MaterialDesignTitleTextBlock}" Text="{lex:Loc Str_On}"/>
+                        </DockPanel>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>

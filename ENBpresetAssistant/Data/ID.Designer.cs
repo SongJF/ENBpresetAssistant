@@ -205,6 +205,15 @@ namespace ENBpresetAssistant.Data {
         }
         
         /// <summary>
+        ///   查找类似 VerificationMode 的本地化字符串。
+        /// </summary>
+        public static string ST_VerificationMode {
+            get {
+                return ResourceManager.GetString("ST_VerificationMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 CommonStr 的本地化字符串。
         /// </summary>
         public static string StrRes_Common {

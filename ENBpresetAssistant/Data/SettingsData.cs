@@ -37,5 +37,12 @@
             get { return _StoragePath; }
             set { _StoragePath = value; }
         }
+
+        private static bool _VerificationMode;
+        public static bool VerificationMode
+        {
+            get { return _VerificationMode; }
+            set { _VerificationMode = value; }
+        }
     }
 }

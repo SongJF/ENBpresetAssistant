@@ -81,13 +81,40 @@ namespace ENBpresetAssistant.Pages
             Succeed();
         }
 
+
+        private void VerificationMode_Click(object sender, RoutedEventArgs e)
+        {
+            bool VerificationMode;
+            var thisToggle = sender as ToggleButton;
+            switch (thisToggle.IsChecked)
+            {
+                case true:
+                    VerificationMode = true;
+                    break;
+                case false:
+                    VerificationMode = false;
+                    break;
+                default:
+                    VerificationMode = true;
+                    break;
+            }
+
+            if (!SettingsHelper.ModifySettings(Data.ID.ST_VerificationMode, VerificationMode.ToString()))
+            {
+                Failed();
+                return;
+            }
+
+            Succeed();
+        }
+
         private void TESVPath_Click(object sender, RoutedEventArgs e)
         {
             string Path = FileHelper.OpenFolderDialog();
             if (Path == null) return;
 
             if (!PathCheck(Path)) return;
-            if (!TESVCheck(Path)) return;
+            if (Data.SettingsData.VerificationMode&&(!TESVCheck(Path))) return;
             if (!SettingsHelper.ModifySettings("TESVPath", Path)) return;
 
             TESVPath.Text = Path;
@@ -141,7 +168,7 @@ namespace ENBpresetAssistant.Pages
                 thisTexBox.Text = Data.SettingsData.TESVPath;
                 return;
             }
-            if (!TESVCheck(Path))
+            if (Data.SettingsData.VerificationMode && (!TESVCheck(Path)))
             {
                 thisTexBox.Text = Data.SettingsData.TESVPath;
                 return;

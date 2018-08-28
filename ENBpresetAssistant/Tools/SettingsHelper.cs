@@ -49,9 +49,10 @@ namespace ENBpresetAssistant.Tools
                 if (!SetGlobal(option, value)) throw new ArgumentOutOfRangeException("Unvalid Setting Option");
                 JsonHelper.JsonSave(SettingsPath,TransGlobalSettingsToJObject());
             }
-            catch
+            catch(Exception exp)
             {
                 Console.Write("Faild to Save");
+                Console.WriteLine(exp);
                 return false;
             }
 
@@ -93,6 +94,7 @@ namespace ENBpresetAssistant.Tools
             else if (option == ID.ST_Language) SettingsData.Laguage = value;
             else if (option == ID.ST_TESVPath) SettingsData.TESVPath = value;
             else if (option == ID.ST_StoragePath) SettingsData.StoragePath = value;
+            else if (option == ID.ST_VerificationMode) SettingsData.VerificationMode = Convert.ToBoolean(value);
             else return false;
 
             return true;
@@ -109,6 +111,7 @@ namespace ENBpresetAssistant.Tools
                 SetGlobal(ID.ST_ThemeColor, "brown");
                 SetGlobal(ID.ST_Language, ID.English);
                 SetGlobal(ID.ST_StoragePath, Directory.GetCurrentDirectory());
+                SetGlobal(ID.ST_VerificationMode, "true");
                 JsonHelper.JsonSave(Directory.GetCurrentDirectory() + "\\Setings.Json",TransGlobalSettingsToJObject());
             }
             catch
@@ -127,7 +130,8 @@ namespace ENBpresetAssistant.Tools
                 { ID.ST_ThemeColor,SettingsData.ThemeColor},
                 { ID.ST_Language,SettingsData.Laguage },
                 { ID.ST_TESVPath,SettingsData.TESVPath },
-                { ID.ST_StoragePath,SettingsData.StoragePath }
+                { ID.ST_StoragePath,SettingsData.StoragePath },
+                { ID.ST_VerificationMode,SettingsData.VerificationMode }
             };
             return jObject;
         }
