@@ -62,8 +62,16 @@ namespace ENBpresetAssistant.Pages.InstallWin.PresetAdd
             if (InstalledCoreRadBtn.IsChecked == true)
             {
                 if (CoreSelection.SelectedItem == null) return;
-                DefaultCoreText.Text = CoreSelection.SelectedItem.ToString();
-                FileHelper.CP_Folder(SettingsData.StoragePath + ID.Dir_Core + "\\" + DefaultCoreText.Text, SettingsData.StoragePath + ID.Dir_Preset + "\\" + GlobalVariables_Preset.PresetName);
+                try
+                {
+                    DefaultCoreText.Text = CoreSelection.SelectedItem.ToString();
+                    FileHelper.CP_Folder(SettingsData.StoragePath + ID.Dir_Core + "\\" + DefaultCoreText.Text, SettingsData.StoragePath + ID.Dir_Preset + "\\" + GlobalVariables_Preset.PresetName);
+                }
+                catch(Exception exp)
+                {
+                    MainWindow.Snackbar.MessageQueue.Enqueue(exp);
+                    return;
+                }
             }
 
             GlobalVariables_Preset.CoreVersion = DefaultCoreText.Text;

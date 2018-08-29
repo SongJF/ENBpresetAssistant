@@ -252,7 +252,10 @@ namespace ENBpresetAssistant.Pages
             List<string> TESV = new List<string>
                 {
                     Data.ID.Exe_Skyrim,
-                    Data.ID.Exe_SkyrimSE
+                    Data.ID.Exe_SkyrimSE,
+                    "SkyrimSELauncher.exe",
+                    "SkyrimLauncher.exe",
+                    "TSEV.exe"
                 };
             if (!FileHelper.FileExistOrNot(TESV, Path, 0))
             {
